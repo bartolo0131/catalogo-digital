@@ -4,7 +4,7 @@
 console.log("✅ whatsapp.js cargado");
 
 // TU NÚMERO DE WHATSAPP (sin el +)
-const MI_WHATSAPP = "573003953447";
+const MI_WHATSAPP = "573008813801";
 
 // FUNCIÓN PRINCIPAL - ABRE WHATSAPP REALMENTE
 function contactar(producto) {
