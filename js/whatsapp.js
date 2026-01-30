@@ -1,6 +1,7 @@
 // URL de la API para producción
 const API_URL = "https://catalogo-digital-fu1l.onrender.com/api";
 
+// 🔹 FUNCIÓN COMPLETA (con guardado en BD + WhatsApp)
 async function contactar(producto) {
   console.log("Iniciando contacto para producto:", producto);
 
@@ -23,7 +24,7 @@ async function contactar(producto) {
     return;
   }
 
-  // Validar teléfono (solo números, mínimo 10 dígitos)
+  // Validar teléfono
   const telefonoLimpio = telefonoUser.replace(/\D/g, "");
   if (telefonoLimpio.length < 10) {
     alert(
@@ -34,7 +35,7 @@ async function contactar(producto) {
     return;
   }
 
-  // Detectar género de la página actual
+  // Detectar género
   let genero = "desconocido";
   const path = window.location.pathname;
   if (path.includes("/hombre")) {
@@ -77,12 +78,11 @@ async function contactar(producto) {
     console.log("Response status:", response.status);
 
     if (!response.ok) {
-      const errorData = await response.text();
-      console.warn("⚠️ No se pudo guardar el lead:", errorData);
-      // Continuamos aunque falle el guardado
+      console.warn(
+        "⚠️ No se pudo guardar el lead, pero continuamos con WhatsApp",
+      );
     } else {
-      const data = await response.json();
-      console.log("✅ Lead guardado:", data);
+      console.log("✅ Lead guardado exitosamente");
     }
   } catch (error) {
     console.error("❌ Error al guardar lead:", error);
@@ -90,20 +90,9 @@ async function contactar(producto) {
   }
 
   // 🔹 Abrir WhatsApp
-  const telefonoEmpresa = "573003953447";
-  const mensaje = `¡Hola! Soy *${nombre}* 📱
+  abrirWhatsApp(nombre, telefonoLimpio, producto);
 
-🛍️ *Producto de interés:* ${producto}
-📞 *Mi teléfono:* ${telefonoLimpio}
-
-📍 *Página:* ${window.location.href}
-⏰ *Fecha:* ${new Date().toLocaleDateString("es-CO")}
-
-¡Me encantaría recibir más información! ✨`;
-
-  console.log("Abriendo WhatsApp...");
-
-  // Limpiar campos antes de abrir WhatsApp
+  // Limpiar campos
   nombreInput.value = "";
   telefonoInput.value = "";
 
@@ -112,18 +101,100 @@ async function contactar(producto) {
     btnOriginal.innerHTML = "📞 Solicitar información";
     btnOriginal.disabled = false;
   }
+}
 
-  // Abrir WhatsApp en nueva pestaña
+// 🔹 FUNCIÓN DIRECTA A WHATSAPP (sin guardar en BD)
+function contactarDirecto(producto) {
+  console.log("Contacto directo para producto:", producto);
+
+  const nombreInput = document.getElementById("nombre");
+  const telefonoInput = document.getElementById("telefono");
+
+  // Si hay campos, pedirlos
+  if (nombreInput && telefonoInput) {
+    const nombre = nombreInput.value.trim();
+    const telefonoUser = telefonoInput.value.trim();
+
+    if (nombre === "" || telefonoUser === "") {
+      alert("⚠️ Por favor completa tu nombre y teléfono primero");
+      nombreInput.focus();
+      return;
+    }
+
+    const telefonoLimpio = telefonoUser.replace(/\D/g, "");
+    if (telefonoLimpio.length < 10) {
+      alert("📱 Por favor ingresa un número de teléfono válido");
+      telefonoInput.focus();
+      return;
+    }
+
+    abrirWhatsApp(nombre, telefonoLimpio, producto);
+  } else {
+    // Si no hay formulario, pedir datos
+    const nombre = prompt("👤 Por favor ingresa tu nombre:");
+    if (!nombre) return;
+
+    const telefono = prompt("📱 Por favor ingresa tu teléfono:");
+    if (!telefono) return;
+
+    const telefonoLimpio = telefono.replace(/\D/g, "");
+    if (telefonoLimpio.length < 10) {
+      alert("Número de teléfono inválido");
+      return;
+    }
+
+    abrirWhatsApp(nombre, telefonoLimpio, producto);
+  }
+}
+
+// 🔹 FUNCIÓN COMÚN PARA ABRIR WHATSAPP
+function abrirWhatsApp(nombre, telefono, producto) {
+  const telefonoEmpresa = "573003953447";
+  const mensaje = `¡Hola! Soy *${nombre}* 📱
+
+🛍️ *Producto de interés:* ${producto}
+📞 *Mi teléfono:* ${telefono}
+
+📍 *Página:* ${window.location.href}
+⏰ *Fecha:* ${new Date().toLocaleDateString("es-CO")}
+
+¡Me encantaría recibir más información! ✨`;
+
+  console.log("Abriendo WhatsApp...");
+
   const whatsappUrl = `https://wa.me/${telefonoEmpresa}?text=${encodeURIComponent(mensaje)}`;
   window.open(whatsappUrl, "_blank", "noopener,noreferrer");
 
   // Feedback al usuario
   setTimeout(() => {
     alert(
-      `✅ ¡Perfecto, ${nombre}! \n\nSe ha abierto WhatsApp para que te contactes con nosotros. \n\nSi no se abrió automáticamente, puedes escribir al número: +57 300 395 3447`,
+      `✅ ¡Perfecto, ${nombre}! \n\nSe ha abierto WhatsApp para que te contactes. \n\nSi no se abrió automáticamente, puedes escribir al número: +57 300 395 3447`,
     );
   }, 500);
 }
 
-// Hacer función global
-window.contactar = contactar;
+// 🔹 FUNCIÓN PARA CONTACTO GENERAL (desde menú o footer)
+function contactarGeneral() {
+  const nombre = prompt("👤 ¿Cuál es tu nombre?");
+  if (!nombre) return;
+
+  const telefono = prompt("📱 ¿Cuál es tu número de teléfono?");
+  if (!telefono) return;
+
+  const telefonoLimpio = telefono.replace(/\D/g, "");
+  if (telefonoLimpio.length < 10) {
+    alert("Por favor ingresa un número válido (10 dígitos)");
+    return;
+  }
+
+  const producto =
+    prompt("🛍️ ¿En qué producto estás interesado/a? (opcional)") ||
+    "Producto general";
+
+  abrirWhatsApp(nombre, telefonoLimpio, producto);
+}
+
+// Hacer funciones globales
+window.contactar = contactar; // Para botones del catálogo (guarda en BD)
+window.contactarDirecto = contactarDirecto; // Para botones directos a WhatsApp
+window.contactarGeneral = contactarGeneral; // Para menú/footer
