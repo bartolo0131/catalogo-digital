@@ -1,210 +1,28 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfumes para Hombre - WhatsApp Directo</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* ESTILOS ESPECIALES PARA BOTONES WHATSAPP */
-        .whatsapp-button {
-            background: #25D366 !important;
-            color: white !important;
-            padding: 15px 25px !important;
-            border: none !important;
-            border-radius: 50px !important;
-            font-size: 18px !important;
-            cursor: pointer !important;
-            margin: 10px !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            gap: 10px !important;
-            transition: all 0.3s !important;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3) !important;
-        }
-        
-        .whatsapp-button:hover {
-            transform: translateY(-3px) !important;
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5) !important;
-            background: #1DA851 !important;
-        }
-        
-        .whatsapp-button:active {
-            transform: translateY(1px) !important;
-        }
-        
-        .whatsapp-icon {
-            font-size: 24px !important;
-        }
-        
-        .test-button {
-            background: #FF6B6B !important;
-            animation: pulse 2s infinite !important;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .form-container {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            margin: 30px auto;
-            max-width: 600px;
-        }
-        
-        .form-container input {
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            font-size: 16px;
-            box-sizing: border-box;
-        }
-        
-        .form-container input:focus {
-            border-color: #25D366;
-            outline: none;
-        }
-        
-        .instructions {
-            background: #E3F2FD;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 20px 0;
-            border-left: 5px solid #2196F3;
-        }
-        
-        .product-card {
-            border: 2px solid #25D366 !important;
-            position: relative;
-        }
-        
-        .product-card::before {
-            content: "💎 EXCLUSIVO";
-            position: absolute;
-            top: -10px;
-            right: 10px;
-            background: #25D366;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>💎 PERFUMES PARA HOMBRE</h1>
-        <nav class="menu">
-            <a href="index.html">🏠 INICIO</a>
-            <a href="hombre.html" style="background: #25D366;">👨 HOMBRE</a>
-            <a href="mujer.html">👩 MUJER</a>
-        </nav>
-    </header>
+<!-- Solo cambia estos elementos respecto a hombre.html -->
+
+1. En el título:
+<title>Perfumes para Mujer - Catálogo Digital</title>
+
+2. En el menú (cambia el enlace activo):
+<a href="mujer.html" style="color: #e84393; margin: 0 15px; text-decoration: none; font-weight: bold;">👩 Mujer</a>
+
+3. En el título principal:
+<h1 class="catalogo-titulo">PERFUMES EXCLUSIVOS PARA MUJER</h1>
+
+4. En el botón de prueba:
+<button onclick="contactar('Prueba Catálogo Mujer')">
+
+5. En el script final (cambia el género):
+<script>
+    // ... resto del código igual ...
     
-    <main>
-        <!-- BOTÓN DE PRUEBA GRANDE -->
-        <div style="text-align: center; margin: 30px 0;">
-            <button onclick="probarWhatsApp()" class="whatsapp-button test-button" style="font-size: 20px; padding: 20px 40px;">
-                <span class="whatsapp-icon">🔥</span>
-                PROBAR WHATSAPP AHORA
-                <span class="whatsapp-icon">🔥</span>
-            </button>
-            <p style="color: #666; margin-top: 10px;">¡Haz clic aquí para probar INMEDIATAMENTE!</p>
-        </div>
-        
-        <!-- FORMULARIO PRINCIPAL -->
-        <div class="form-container">
-            <h2>📝 COMPLETA TUS DATOS</h2>
-            <p>Llena esto una sola vez y podrás contactar todos los productos</p>
-            
-            <input type="text" id="nombre" placeholder="👤 Tu nombre completo" required>
-            <input type="tel" id="telefono" placeholder="📱 Tu WhatsApp (ej: 3001234567)" required>
-            
-            <div style="text-align: center; margin-top: 20px;">
-                <button onclick="contactar('Consulta General')" class="whatsapp-button">
-                    <span class="whatsapp-icon">💬</span>
-                    CONTACTAR POR WHATSAPP
-                </button>
-            </div>
-        </div>
-        
-        <!-- INSTRUCCIONES -->
-        <div class="instructions">
-            <h3>✅ ¿CÓMO FUNCIONA?</h3>
-            <p>1. Completa tu nombre y teléfono arriba</p>
-            <p>2. Haz clic en cualquier botón "CONTACTAR" de los productos</p>
-            <p>3. ¡Se abrirá WhatsApp automáticamente con tus datos!</p>
-            <p><strong>📱 Número de contacto: +57 300 395 3447</strong></p>
-        </div>
-        
-        <!-- CATÁLOGO -->
-        <h2>🛍️ NUESTROS PERFUMES</h2>
-        <div class="catalogo" id="catalogo-hombre">
-            <!-- Los productos se cargarán aquí -->
-        </div>
-        
-        <!-- BOTÓN FINAL -->
-        <div style="text-align: center; margin: 50px 0;">
-            <button onclick="contactar('Catálogo completo para hombre')" class="whatsapp-button" style="font-size: 22px; padding: 20px 50px;">
-                <span class="whatsapp-icon">💎</span>
-                SOLICITAR CATÁLOGO COMPLETO
-                <span class="whatsapp-icon">💎</span>
-            </button>
-        </div>
-    </main>
-    
-    <footer style="text-align: center; padding: 30px; background: #333; color: white; margin-top: 50px;">
-        <h3>📞 CONTACTO DIRECTO</h3>
-        <p style="font-size: 24px; margin: 20px 0;">
-            <strong>WhatsApp: +57 300 395 3447</strong>
-        </p>
-        <button onclick="contactar('Consulta desde el footer')" class="whatsapp-button" style="margin: 20px;">
-            <span class="whatsapp-icon">💬</span>
-            ESCRIBIR AHORA
-        </button>
-        <p>© 2024 - Catálogo Digital - Todos los derechos reservados</p>
-    </footer>
-    
-    <!-- SCRIPTS - ORDEN IMPORTANTE -->
-    <script src="catalogo.js"></script>
-    <script src="whatsapp.js"></script>
-    
-    <!-- SCRIPT EXTRA DE SEGURIDAD -->
-    <script>
-        // Verificar que todo cargó
-        console.log("✅ HTML cargado completamente");
-        
-        // Forzar recarga del catálogo
-        setTimeout(() => {
+    // Forzar recarga después de 2 segundos si no se cargó
+    setTimeout(() => {
+        if (contenedor && contenedor.innerHTML.trim() === '') {
+            console.log("🔄 Forzando carga del catálogo MUJER...");
             if (typeof cargarCatalogo === 'function') {
-                console.log("📦 Cargando catálogo...");
-                cargarCatalogo('hombre');
-            }
-        }, 500);
-        
-        // Asegurar que los botones funcionen
-        document.addEventListener('click', function(e) {
-            if (e.target.textContent.includes('WhatsApp') || e.target.textContent.includes('CONTACTAR')) {
-                console.log("🖱️ Botón de WhatsApp clickeado");
-            }
-        });
-        
-        // Debug: mostrar todas las funciones disponibles
-        console.log("🔍 Funciones disponibles en window:");
-        for (let key in window) {
-            if (typeof window[key] === 'function' && key.includes('whatsapp' || key.includes('contactar'))) {
-                console.log(`- ${key}()`);
+                cargarCatalogo('mujer');  // <- CAMBIA AQUÍ
             }
         }
-    </script>
-</body>
-</html>
+    }, 2000);
+</script>

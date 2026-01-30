@@ -1,197 +1,217 @@
-// ===========================================
-// CATÁLOGO DINÁMICO - PERFUMES HOMBRE/MUJER
-// ===========================================
-console.log("✅ Catalogo.js cargado");
+// ============================================
+// CATÁLOGO FUNCIONAL - PERFUMES HOMBRE/MUJER
+// ============================================
+console.log("✅ Catalogo.js cargado - Listo para mostrar productos");
 
-// URL de tu backend (actualizada con tu URL)
-const API_URL = "https://catalogo-digital-fu1l.onrender.com/api";
-
-// Datos de ejemplo (por si falla la API)
-const productosEjemplo = {
+// Datos de productos FIJOS (funciona sin API)
+const productosData = {
   hombre: [
     {
+      id: 1,
       nombre: "Sauvage Dior",
-      descripcion: "Fragancia masculina fresca y amaderada",
+      descripcion:
+        "Fragancia masculina fresca y amaderada con notas de bergamota y pimienta",
       precio: 120.0,
     },
     {
+      id: 2,
       nombre: "Bleu de Chanel",
-      descripcion: "Aromática masculina con notas cítricas",
+      descripcion:
+        "Aromática masculina con notas cítricas y amaderadas - Elegancia pura",
       precio: 115.0,
     },
     {
+      id: 3,
       nombre: "Invictus Paco Rabanne",
-      descripcion: "Fragancia deportiva masculina",
+      descripcion: "Fragancia deportiva masculina intensa - Victoria y éxito",
       precio: 90.0,
     },
     {
-      nombre: "One Million",
-      descripcion: "Amaderada con notas de canela",
-      precio: 85.0,
-    },
-    {
-      nombre: "Acqua di Gio",
-      descripcion: "Fragancia acuática fresca",
+      id: 4,
+      nombre: "Acqua di Gio Giorgio Armani",
+      descripcion: "Fragancia acuática fresca inspirada en el mar Mediterráneo",
       precio: 95.0,
     },
     {
+      id: 5,
+      nombre: "One Million Paco Rabanne",
+      descripcion: "Amaderada con notas de canela - Moderna, atrevida y lujosa",
+      precio: 85.0,
+    },
+    {
+      id: 6,
       nombre: "Hugo Boss Bottled",
-      descripcion: "Clásica masculina especiada",
+      descripcion: "Clásica masculina especiada - Elegancia y sofisticación",
       precio: 88.0,
     },
   ],
   mujer: [
     {
-      nombre: "Black Opium YSL",
-      descripcion: "Fragancia oriental dulce con café",
+      id: 1,
+      nombre: "Black Opium Yves Saint Laurent",
+      descripcion:
+        "Fragancia oriental dulce con notas de café y vainilla - Adictiva",
       precio: 110.0,
     },
     {
+      id: 2,
       nombre: "J'adore Dior",
-      descripcion: "Fragancia floral femenina elegante",
+      descripcion: "Fragancia floral femenina elegante - El lujo hecho perfume",
       precio: 105.0,
     },
     {
+      id: 3,
       nombre: "Good Girl Carolina Herrera",
-      descripcion: "Fragancia seductora premium",
+      descripcion:
+        "Fragancia seductora premium - Para la mujer moderna y poderosa",
       precio: 95.0,
     },
     {
-      nombre: "La Vie Est Belle",
-      descripcion: "Fragancia floral dulce",
+      id: 4,
+      nombre: "La Vie Est Belle Lancôme",
+      descripcion:
+        "Fragancia floral dulce y alegre - La felicidad en un frasco",
       precio: 100.0,
     },
     {
+      id: 5,
       nombre: "Chanel N°5",
-      descripcion: "Clásico floral aldehído",
+      descripcion: "El clásico floral aldehído - Icónico, eterno y sofisticado",
       precio: 125.0,
     },
     {
+      id: 6,
       nombre: "Flowerbomb Viktor&Rolf",
-      descripcion: "Explosión floral intensa",
+      descripcion: "Explosión floral intensa y romántica - Pura feminidad",
       precio: 108.0,
     },
   ],
 };
 
-// Función para cargar catálogo
-async function cargarCatalogo(genero) {
-  const contenedor = document.getElementById(`catalogo-${genero}`);
+// FUNCIÓN PARA CARGAR EL CATÁLOGO
+function cargarCatalogo(genero) {
+  console.log(`🔄 Cargando catálogo de perfumes para: ${genero}`);
+
+  // 1. Encontrar el contenedor
+  const contenedorId = `catalogo-${genero}`;
+  const contenedor = document.getElementById(contenedorId);
+
   if (!contenedor) {
-    console.error(`No se encontró el contenedor: catalogo-${genero}`);
+    console.error(
+      `❌ ERROR: No se encontró el elemento con ID: ${contenedorId}`,
+    );
+    console.error("Los IDs disponibles en la página son:");
+    console.log([...document.querySelectorAll("[id]")].map((el) => el.id));
     return;
   }
 
-  // Mostrar loading
+  // 2. Mostrar mensaje de carga
   contenedor.innerHTML = `
-        <div class="loading">
+        <div class="loading-catalogo">
             <div class="spinner"></div>
-            <p>Cargando perfumes ${genero === "hombre" ? "para hombre" : "para mujer"}...</p>
+            <p>Cargando perfumes exclusivos ${genero === "hombre" ? "para hombre" : "para mujer"}...</p>
         </div>
     `;
 
-  let productos = [];
+  // 3. Esperar un momento para simular carga
+  setTimeout(() => {
+    // Obtener productos según el género
+    const productos = productosData[genero] || [];
 
-  try {
-    console.log(
-      `🌐 Intentando cargar desde API: ${API_URL}/productos/${genero}`,
-    );
+    if (productos.length === 0) {
+      contenedor.innerHTML = `
+                <div class="no-productos">
+                    <p>😔 No hay productos disponibles en este momento.</p>
+                    <button onclick="cargarCatalogo('${genero}')">🔄 Reintentar</button>
+                </div>
+            `;
+      return;
+    }
 
-    // Intentar cargar desde API
-    const response = await fetch(`${API_URL}/productos/${genero}`, {
-      headers: {
-        Accept: "application/json",
-        "Cache-Control": "no-cache",
-      },
+    // 4. Crear HTML de los productos
+    let htmlProductos = "";
+
+    productos.forEach((producto, index) => {
+      // Escapar comillas simples para evitar errores en onclick
+      const nombreSeguro = producto.nombre
+        .replace(/'/g, "&#39;")
+        .replace(/"/g, "&quot;");
+
+      htmlProductos += `
+                <div class="producto-card" style="animation-delay: ${index * 0.1}s">
+                    <div class="producto-imagen">
+                        <div class="imagen-placeholder">
+                            ${genero === "hombre" ? "👨" : "👩"}
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3 class="producto-nombre">${producto.nombre}</h3>
+                        <p class="producto-descripcion">${producto.descripcion}</p>
+                        <div class="producto-precio">
+                            <span class="precio">$${producto.precio.toFixed(2)}</span>
+                            <span class="iva">IVA incluido</span>
+                        </div>
+                        <button onclick="contactar('${nombreSeguro}')" class="btn-whatsapp">
+                            <span class="whatsapp-icon">💬</span>
+                            Solicitar por WhatsApp
+                        </button>
+                    </div>
+                </div>
+            `;
     });
 
-    if (response.ok) {
-      productos = await response.json();
-      console.log(`✅ API exitosa: ${productos.length} productos cargados`);
-    } else {
-      throw new Error(`API responded with status: ${response.status}`);
-    }
-  } catch (error) {
-    console.warn(
-      "⚠️ Error al cargar desde API, usando datos de ejemplo:",
-      error.message,
-    );
-    // Usar datos de ejemplo si falla la API
-    productos = productosEjemplo[genero] || [];
-  }
+    // 5. Insertar productos en el contenedor
+    contenedor.innerHTML = htmlProductos;
 
-  // Si no hay productos
-  if (!productos || productos.length === 0) {
-    contenedor.innerHTML = `
-            <div class="no-products">
-                <p>😔 No hay productos disponibles en este momento.</p>
-                <button onclick="cargarCatalogo('${genero}')">🔄 Reintentar</button>
-            </div>
-        `;
-    return;
-  }
-
-  // Limpiar contenedor
-  contenedor.innerHTML = "";
-
-  // Crear cards para cada producto
-  productos.forEach((producto, index) => {
-    const card = document.createElement("div");
-    card.className = "product-card";
-
-    // Escapar comillas para el onclick
-    const nombreSeguro = producto.nombre.replace(/'/g, "\\'");
-
-    card.innerHTML = `
-            <div class="card-header">
-                <h3>${producto.nombre}</h3>
-                ${producto.precio ? `<span class="price">$${producto.precio.toFixed(2)}</span>` : ""}
-            </div>
-            <div class="card-body">
-                <p class="description">${producto.descripcion || "Fragancia exclusiva de alta calidad"}</p>
-            </div>
-            <div class="card-footer">
-                <button onclick="contactar('${nombreSeguro}')" class="whatsapp-btn">
-                    <span class="whatsapp-icon">💬</span>
-                    Solicitar por WhatsApp
-                </button>
-            </div>
-        `;
-
-    // Efecto de aparición
-    card.style.opacity = "0";
-    card.style.transform = "translateY(20px)";
-
-    contenedor.appendChild(card);
-
-    // Animación de entrada
+    // 6. Aplicar animaciones
     setTimeout(() => {
-      card.style.transition = "all 0.5s ease";
-      card.style.opacity = "1";
-      card.style.transform = "translateY(0)";
-    }, index * 100);
-  });
+      const cards = contenedor.querySelectorAll(".producto-card");
+      cards.forEach((card, index) => {
+        card.style.opacity = "1";
+        card.style.transform = "translateY(0)";
+      });
+    }, 100);
 
-  console.log(`✅ Catálogo ${genero} cargado: ${productos.length} productos`);
+    console.log(
+      `✅ Catálogo ${genero} cargado: ${productos.length} productos mostrados`,
+    );
+  }, 800); // Pequeña pausa para mejor UX
 }
 
-// Cargar automáticamente cuando la página esté lista
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("📄 DOM completamente cargado");
+// FUNCIÓN PARA DETECTAR Y CARGAR AUTOMÁTICAMENTE
+function iniciarCatalogo() {
+  console.log("🚀 Iniciando sistema de catálogo...");
 
-  // Determinar qué catálogo cargar según la página
+  // Detectar en qué página estamos
   const path = window.location.pathname;
+  const pagina = document.URL;
 
-  if (path.includes("hombre.html") || path.includes("/hombre")) {
-    console.log("👨 Cargando catálogo para hombres");
+  console.log("📄 Página actual:", pagina);
+  console.log("📍 Path:", path);
+
+  // Verificar si estamos en página de hombre o mujer
+  if (pagina.includes("hombre") || path.includes("hombre")) {
+    console.log("👨 Detectada página HOMBRE");
     cargarCatalogo("hombre");
-  } else if (path.includes("mujer.html") || path.includes("/mujer")) {
-    console.log("👩 Cargando catálogo para mujeres");
+  } else if (pagina.includes("mujer") || path.includes("mujer")) {
+    console.log("👩 Detectada página MUJER");
     cargarCatalogo("mujer");
+  } else {
+    console.log("ℹ️ No es página de catálogo específico");
   }
-});
+}
 
-// Función para recargar manualmente
-window.recargarCatalogo = function (genero) {
-  cargarCatalogo(genero);
-};
+// ESPERAR A QUE LA PÁGINA CARGUE COMPLETAMENTE
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", iniciarCatalogo);
+} else {
+  iniciarCatalogo();
+}
+
+// Hacer función disponible globalmente para recargas manuales
+window.cargarCatalogo = cargarCatalogo;
+window.recargarCatalogo = cargarCatalogo;
+
+console.log("🎯 Funciones disponibles:");
+console.log("- cargarCatalogo('hombre') o cargarCatalogo('mujer')");
+console.log("- recargarCatalogo('hombre') o recargarCatalogo('mujer')");

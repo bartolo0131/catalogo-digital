@@ -3,224 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Directo - Perfumes</title>
+    <title>Perfumes para Hombre - Catálogo Digital</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
+        /* ESTILOS ESPECÍFICOS PARA EL CATÁLOGO */
+        .catalogo-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
         
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .container {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            max-width: 500px;
-            width: 100%;
+        .catalogo-titulo {
             text-align: center;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
         }
         
-        h1 {
-            color: #333;
-            margin-bottom: 30px;
-            font-size: 28px;
+        #catalogo-hombre {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
         }
         
-        .whatsapp-btn {
+        .producto-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: aparecer 0.5s ease forwards;
+        }
+        
+        @keyframes aparecer {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .producto-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .producto-imagen {
+            height: 200px;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .imagen-placeholder {
+            font-size: 80px;
+            color: white;
+            opacity: 0.8;
+        }
+        
+        .producto-info {
+            padding: 25px;
+        }
+        
+        .producto-nombre {
+            color: #2c3e50;
+            margin: 0 0 15px 0;
+            font-size: 1.5rem;
+            min-height: 60px;
+        }
+        
+        .producto-descripcion {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            min-height: 80px;
+        }
+        
+        .producto-precio {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .precio {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #27ae60;
+        }
+        
+        .iva {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .btn-whatsapp {
             background: #25D366;
             color: white;
             border: none;
-            padding: 20px 40px;
-            font-size: 22px;
-            border-radius: 50px;
+            padding: 15px 25px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
             cursor: pointer;
-            margin: 20px 0;
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-            width: 100%;
+            gap: 10px;
             transition: all 0.3s;
-            font-weight: bold;
-            text-decoration: none;
         }
         
-        .whatsapp-btn:hover {
+        .btn-whatsapp:hover {
             background: #1DA851;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
-        }
-        
-        .whatsapp-btn:active {
-            transform: translateY(1px);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
         }
         
         .whatsapp-icon {
-            font-size: 32px;
+            font-size: 1.2rem;
         }
         
-        .input-group {
-            margin: 20px 0;
-            text-align: left;
+        .loading-catalogo {
+            text-align: center;
+            padding: 60px 20px;
+            grid-column: 1 / -1;
         }
         
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #555;
-            font-weight: bold;
+        .loading-catalogo .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
         }
         
-        input {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            font-size: 16px;
-            transition: border 0.3s;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
-        input:focus {
-            border-color: #25D366;
-            outline: none;
+        .no-productos {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+            border-radius: 15px;
+            grid-column: 1 / -1;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
-        .test-btn {
-            background: #FF6B6B;
-            animation: pulse 1.5s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .instructions {
-            background: #E8F5E9;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 25px 0;
-            border-left: 5px solid #4CAF50;
-            text-align: left;
-        }
-        
-        .instructions h3 {
-            color: #2E7D32;
-            margin-bottom: 10px;
-        }
-        
-        .phone-number {
-            font-size: 24px;
-            font-weight: bold;
-            color: #25D366;
-            margin: 20px 0;
-            padding: 10px;
-            background: #F1F8E9;
-            border-radius: 10px;
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            #catalogo-hombre {
+                grid-template-columns: 1fr;
+            }
+            
+            .catalogo-titulo {
+                font-size: 2rem;
+            }
+            
+            .producto-nombre {
+                font-size: 1.3rem;
+                min-height: auto;
+            }
+            
+            .producto-descripcion {
+                min-height: auto;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>💎 PERFUMES EXCLUSIVOS</h1>
+    <!-- HEADER SIMPLE -->
+    <header style="background: #2c3e50; color: white; padding: 20px; text-align: center;">
+        <h1 style="margin: 0; font-size: 2rem;">💎 CATÁLOGO DE PERFUMES</h1>
+        <nav style="margin-top: 20px;">
+            <a href="index.html" style="color: white; margin: 0 15px; text-decoration: none;">🏠 Inicio</a>
+            <a href="hombre.html" style="color: #3498db; margin: 0 15px; text-decoration: none; font-weight: bold;">👨 Hombre</a>
+            <a href="mujer.html" style="color: white; margin: 0 15px; text-decoration: none;">👩 Mujer</a>
+        </nav>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+        <!-- TÍTULO -->
+        <h1 class="catalogo-titulo">PERFUMES EXCLUSIVOS PARA HOMBRE</h1>
         
-        <div class="phone-number">
-            📱 WhatsApp: +57 300 395 3447
+        <!-- BOTÓN DE PRUEBA -->
+        <div style="text-align: center; margin: 30px 0;">
+            <button onclick="contactar('Prueba Catálogo Hombre')" 
+                    style="background: #25D366; color: white; border: none; padding: 15px 30px; 
+                           border-radius: 8px; font-size: 1.1rem; cursor: pointer;">
+                🔥 PROBAR WHATSAPP AHORA
+            </button>
         </div>
         
-        <!-- BOTÓN DE PRUEBA INMEDIATA -->
-        <button onclick="probarWhatsApp()" class="whatsapp-btn test-btn">
-            <span class="whatsapp-icon">🔥</span>
-            PROBAR WHATSAPP AHORA
-            <span class="whatsapp-icon">🔥</span>
+        <!-- FORMULARIO SIMPLE -->
+        <div style="max-width: 600px; margin: 40px auto; padding: 30px; background: white; 
+                   border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+            <h3 style="text-align: center; color: #2c3e50; margin-bottom: 20px;">
+                📝 COMPLETA TUS DATOS (OPCIONAL)
+            </h3>
+            <input type="text" id="nombre" placeholder="👤 Tu nombre" 
+                   style="width: 100%; padding: 15px; margin-bottom: 15px; border: 2px solid #ddd; border-radius: 8px;">
+            <input type="tel" id="telefono" placeholder="📱 Tu WhatsApp" 
+                   style="width: 100%; padding: 15px; margin-bottom: 20px; border: 2px solid #ddd; border-radius: 8px;">
+        </div>
+        
+        <!-- CONTENEDOR DEL CATÁLOGO -->
+        <div class="catalogo-container">
+            <h2 style="text-align: center; color: #3498db; margin-bottom: 20px;">
+                🛍️ NUESTRA COLECCIÓN EXCLUSIVA
+            </h2>
+            
+            <!-- AQUÍ SE CARGARÁ EL CATÁLOGO -->
+            <div id="catalogo-hombre">
+                <!-- El catálogo se cargará aquí automáticamente -->
+            </div>
+            
+            <!-- BOTÓN PARA RECARGAR (por si acaso) -->
+            <div style="text-align: center; margin-top: 40px;">
+                <button onclick="cargarCatalogo('hombre')" 
+                        style="background: #3498db; color: white; border: none; padding: 12px 25px; 
+                               border-radius: 8px; cursor: pointer;">
+                    🔄 Recargar Catálogo
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer style="background: #2c3e50; color: white; text-align: center; padding: 30px; margin-top: 50px;">
+        <h3>📞 CONTACTO DIRECTO</h3>
+        <p style="font-size: 1.2rem; margin: 20px 0;">
+            <strong>WhatsApp: +57 300 395 3447</strong>
+        </p>
+        <button onclick="contactar('Consulta desde el pie de página')" 
+                style="background: #25D366; color: white; border: none; padding: 15px 30px; 
+                       border-radius: 8px; font-size: 1.1rem; cursor: pointer; margin: 10px;">
+            💬 ESCRIBIR POR WHATSAPP
         </button>
-        
-        <p style="color: #666; margin: 15px 0;">O completa el formulario:</p>
-        
-        <div class="input-group">
-            <label for="nombre">👤 Tu Nombre</label>
-            <input type="text" id="nombre" placeholder="Ej: Carlos Pérez">
-        </div>
-        
-        <div class="input-group">
-            <label for="telefono">📱 Tu WhatsApp</label>
-            <input type="tel" id="telefono" placeholder="Ej: 3001234567">
-        </div>
-        
-        <!-- BOTÓN PRINCIPAL -->
-        <button onclick="contactar('Perfumes para Hombre')" class="whatsapp-btn">
-            <span class="whatsapp-icon">💬</span>
-            CONTACTAR POR WHATSAPP
-        </button>
-        
-        <!-- BOTÓN DIRECTO (sin formulario) -->
-        <button onclick="whatsappDirecto('Consulta Rápida')" class="whatsapp-btn" style="background: #3498db;">
-            <span class="whatsapp-icon">⚡</span>
-            WHATSAPP DIRECTO
-        </button>
-        
-        <div class="instructions">
-            <h3>✅ ¿CÓMO FUNCIONA?</h3>
-            <p>1. Completa tu nombre y WhatsApp (opcional)</p>
-            <p>2. Haz clic en cualquier botón verde</p>
-            <p>3. ¡Se abrirá WhatsApp automáticamente!</p>
-            <p><strong>Si no se abre, copia el número de arriba</strong></p>
-        </div>
-        
-        <div style="margin-top: 30px; color: #777; font-size: 14px;">
-            <p>© 2024 - Catálogo Digital</p>
-            <p>Si tienes problemas, escribe al: +57 300 395 3447</p>
-        </div>
-    </div>
+    </footer>
+
+    <!-- SCRIPTS - ORDEN IMPORTANTE -->
+    <script src="whatsapp.js"></script>
+    <script src="catalogo.js"></script>
     
-    <!-- SCRIPT PRINCIPAL -->
-    <script src="whatsapp-garantizado.js"></script>
-    
-    <!-- SCRIPT DE SEGURIDAD EXTRA -->
+    <!-- SCRIPT DE VERIFICACIÓN -->
     <script>
-        // Forzar la carga del script
-        console.log("📄 HTML completamente cargado");
+        console.log("🔍 Verificando carga de página hombre.html");
+        console.log("✅ Scripts cargados:", {
+            whatsapp: typeof contactar,
+            catalogo: typeof cargarCatalogo
+        });
         
-        // Crear botón de emergencia
+        // Verificar que el contenedor existe
+        const contenedor = document.getElementById('catalogo-hombre');
+        console.log("📦 Contenedor encontrado:", !!contenedor);
+        
+        // Forzar recarga después de 2 segundos si no se cargó
         setTimeout(() => {
-            if (!window.contactar) {
-                console.error("❌ Script no cargado, creando función de emergencia");
-                
-                // Función de emergencia
-                window.contactar = function(producto) {
-                    const nombre = prompt("Nombre:");
-                    const telefono = prompt("WhatsApp:");
-                    if (nombre && telefono) {
-                        const mensaje = `Hola, soy ${nombre} (${telefono}). Interesado en ${producto}`;
-                        window.location.href = `https://wa.me/573003953447?text=${encodeURIComponent(mensaje)}`;
-                    }
-                };
-                
-                window.probarWhatsApp = function() {
-                    window.location.href = "https://wa.me/573003953447?text=Prueba del catálogo";
-                };
-                
-                console.log("✅ Funciones de emergencia creadas");
+            if (contenedor && contenedor.innerHTML.trim() === '') {
+                console.log("🔄 Forzando carga del catálogo...");
+                if (typeof cargarCatalogo === 'function') {
+                    cargarCatalogo('hombre');
+                }
             }
-        }, 1000);
-        
-        // Mostrar ayuda en consola
-        console.log("💡 Ayuda: Si WhatsApp no se abre:");
-        console.log("1. Acepta ventanas emergentes");
-        console.log("2. Usa el botón 'WHATSAPP DIRECTO'");
-        console.log("3. Copia el número: +57 300 395 3447");
+        }, 2000);
     </script>
 </body>
 </html>

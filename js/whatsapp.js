@@ -1,88 +1,57 @@
-// ===========================================
-// WHATSAPP FUNCIONAL - CATÁLOGO DE PERFUMES
-// ===========================================
-console.log("✅ WhatsApp.js cargado - Listo para usar");
+// whatsapp.js - FUNCIÓN SIMPLE Y FUNCIONAL
+console.log("✅ WhatsApp.js cargado");
 
-// Configuración
-const NUMERO_WHATSAPP = "573003953447"; // Tu número
-
-// FUNCIÓN PRINCIPAL - ABRE WHATSAPP
 function contactar(producto) {
-  console.log("📞 Contactando para:", producto);
+  console.log("Contactando para:", producto);
 
   // Obtener datos del formulario
-  const nombreInput = document.getElementById("nombre");
-  const telefonoInput = document.getElementById("telefono");
+  const nombre = document.getElementById("nombre")?.value || "";
+  const telefono = document.getElementById("telefono")?.value || "";
 
-  let nombre = "";
-  let telefono = "";
+  // Si no hay datos en el formulario, pedirlos
+  let nombreFinal = nombre.trim();
+  let telefonoFinal = telefono.trim();
 
-  // Si hay formulario, usar esos datos
-  if (nombreInput && telefonoInput) {
-    nombre = nombreInput.value.trim();
-    telefono = telefonoInput.value.trim();
-
-    if (!nombre || !telefono) {
-      alert("📝 Por favor completa tu nombre y teléfono");
-      if (!nombre) nombreInput.focus();
-      else telefonoInput.focus();
-      return;
-    }
-  } else {
-    // Si no hay formulario, pedir datos
-    nombre = prompt("👤 ¿Cuál es tu nombre?", "");
-    if (!nombre) return;
-
-    telefono = prompt("📱 ¿Cuál es tu número de WhatsApp?", "");
-    if (!telefono) return;
+  if (!nombreFinal) {
+    nombreFinal = prompt("¿Cuál es tu nombre?", "Cliente");
+    if (!nombreFinal) return;
   }
 
-  // Limpiar y validar teléfono
-  telefono = telefono.replace(/\D/g, "");
-  if (telefono.length < 10) {
-    alert("⚠️ Teléfono inválido. Debe tener al menos 10 dígitos.");
-    if (telefonoInput) telefonoInput.focus();
+  if (!telefonoFinal) {
+    telefonoFinal = prompt("¿Cuál es tu WhatsApp?", "3001234567");
+    if (!telefonoFinal) return;
+  }
+
+  // Limpiar teléfono
+  telefonoFinal = telefonoFinal.replace(/\D/g, "");
+
+  // Validar
+  if (telefonoFinal.length < 10) {
+    alert("Teléfono inválido. Debe tener al menos 10 dígitos.");
     return;
   }
 
-  // Crear mensaje profesional
-  const mensaje = `¡HOLA! 👋\n\n*INFORMACIÓN DEL CLIENTE:*\n👤 *Nombre:* ${nombre}\n📱 *Teléfono:* ${telefono}\n🛍️ *Producto:* ${producto}\n🌐 *Página:* ${window.location.href}\n\n*MENSAJE:*\nHola, vi "${producto}" en su catálogo online y me gustaría recibir más información sobre disponibilidad y precios.\n\n¡Gracias! 😊`;
+  // Crear mensaje
+  const mensaje = `Hola, soy ${nombreFinal} (${telefonoFinal}). Estoy interesado/a en: ${producto}`;
 
-  // Crear URL de WhatsApp
-  const urlWhatsApp = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
+  // Tu número de WhatsApp
+  const numeroWhatsApp = "573003953447";
 
-  console.log("🔗 Abriendo WhatsApp:", urlWhatsApp);
+  // Crear URL
+  const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
 
-  // INTENTO 1: Abrir en nueva ventana
-  const nuevaVentana = window.open(urlWhatsApp, "_blank");
+  console.log("Abriendo WhatsApp:", url);
 
-  // Si falla, INTENTO 2: Redirección directa después de 1 segundo
-  setTimeout(() => {
-    if (
-      !nuevaVentana ||
-      nuevaVentana.closed ||
-      typeof nuevaVentana.closed === "undefined"
-    ) {
-      console.log("⚠️ Ventana bloqueada, redirigiendo...");
-      window.location.href = urlWhatsApp;
-    }
-  }, 1000);
+  // Abrir WhatsApp
+  window.open(url, "_blank");
 
   // Limpiar formulario si existe
-  if (nombreInput && telefonoInput) {
-    nombreInput.value = "";
-    telefonoInput.value = "";
+  if (document.getElementById("nombre")) {
+    document.getElementById("nombre").value = "";
   }
-
-  // Mensaje de confirmación
-  setTimeout(() => {
-    alert(
-      `✅ ¡Perfecto ${nombre}!\n\nSe está abriendo WhatsApp con tus datos.\n\nSi no se abre automáticamente:\n1. Busca este número: +57 ${NUMERO_WHATSAPP}\n2. O escribe manualmente el mensaje.`,
-    );
-  }, 500);
+  if (document.getElementById("telefono")) {
+    document.getElementById("telefono").value = "";
+  }
 }
 
-// Hacer función global
 window.contactar = contactar;
-
-console.log("🚀 Función 'contactar()' disponible");
