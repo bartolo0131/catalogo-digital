@@ -1,171 +1,88 @@
-// ====================================================
-// WHATSAPP GARANTIZADO - FUNCIONA SIEMPRE
-// ====================================================
-console.log("✅ WhatsApp Garantizado - CARGADO");
+// ===========================================
+// WHATSAPP FUNCIONAL - CATÁLOGO DE PERFUMES
+// ===========================================
+console.log("✅ WhatsApp.js cargado - Listo para usar");
 
-// NÚMERO DE WHATSAPP (cambia si es diferente)
-const MI_NUMERO = "573003953447";
+// Configuración
+const NUMERO_WHATSAPP = "573003953447"; // Tu número
 
-// FUNCIÓN PRINCIPAL - SIEMPRE FUNCIONA
-function abrirWhatsApp(producto) {
-  console.log("🔄 Iniciando WhatsApp para:", producto);
+// FUNCIÓN PRINCIPAL - ABRE WHATSAPP
+function contactar(producto) {
+  console.log("📞 Contactando para:", producto);
 
-  // 1. OBTENER O PEDIR DATOS
-  let nombre = document.getElementById("nombre")?.value?.trim() || "";
-  let telefono = document.getElementById("telefono")?.value?.trim() || "";
+  // Obtener datos del formulario
+  const nombreInput = document.getElementById("nombre");
+  const telefonoInput = document.getElementById("telefono");
 
-  // Si no hay datos en el formulario, pedirlos
-  if (!nombre) {
-    nombre = prompt("👤 ¿Cómo te llamas?", "Cliente");
+  let nombre = "";
+  let telefono = "";
+
+  // Si hay formulario, usar esos datos
+  if (nombreInput && telefonoInput) {
+    nombre = nombreInput.value.trim();
+    telefono = telefonoInput.value.trim();
+
+    if (!nombre || !telefono) {
+      alert("📝 Por favor completa tu nombre y teléfono");
+      if (!nombre) nombreInput.focus();
+      else telefonoInput.focus();
+      return;
+    }
+  } else {
+    // Si no hay formulario, pedir datos
+    nombre = prompt("👤 ¿Cuál es tu nombre?", "");
     if (!nombre) return;
-  }
 
-  if (!telefono) {
-    telefono = prompt("📱 ¿Cuál es tu número de WhatsApp?", "3001234567");
+    telefono = prompt("📱 ¿Cuál es tu número de WhatsApp?", "");
     if (!telefono) return;
   }
 
-  // Limpiar teléfono (solo números)
+  // Limpiar y validar teléfono
   telefono = telefono.replace(/\D/g, "");
-
-  // Validar
   if (telefono.length < 10) {
-    alert("⚠️ Número inválido. Debe tener 10+ dígitos.");
+    alert("⚠️ Teléfono inválido. Debe tener al menos 10 dígitos.");
+    if (telefonoInput) telefonoInput.focus();
     return;
   }
 
-  // 2. CREAR MENSAJE
-  const mensaje = `
-¡HOLA! 👋
+  // Crear mensaje profesional
+  const mensaje = `¡HOLA! 👋\n\n*INFORMACIÓN DEL CLIENTE:*\n👤 *Nombre:* ${nombre}\n📱 *Teléfono:* ${telefono}\n🛍️ *Producto:* ${producto}\n🌐 *Página:* ${window.location.href}\n\n*MENSAJE:*\nHola, vi "${producto}" en su catálogo online y me gustaría recibir más información sobre disponibilidad y precios.\n\n¡Gracias! 😊`;
 
-*INFORMACIÓN DEL CLIENTE:*
-👤 *Nombre:* ${nombre}
-📱 *Teléfono:* ${telefono}
-🛍️ *Producto de interés:* ${producto}
-🌐 *Página:* ${window.location.href}
+  // Crear URL de WhatsApp
+  const urlWhatsApp = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
 
-*MENSAJE:*
-Hola, vi ${producto} en su catálogo y me interesa recibir más información.
+  console.log("🔗 Abriendo WhatsApp:", urlWhatsApp);
 
-¡Gracias! 😊
-    `.trim();
+  // INTENTO 1: Abrir en nueva ventana
+  const nuevaVentana = window.open(urlWhatsApp, "_blank");
 
-  // 3. CREAR URL WHATSAPP (2 FORMAS)
-  const url1 = `https://wa.me/${MI_NUMERO}?text=${encodeURIComponent(mensaje)}`;
-  const url2 = `https://api.whatsapp.com/send?phone=${MI_NUMERO}&text=${encodeURIComponent(mensaje)}`;
-  const url3 = `https://web.whatsapp.com/send?phone=${MI_NUMERO}&text=${encodeURIComponent(mensaje)}`;
-
-  console.log("🔗 URLs generadas:", { url1, url2, url3 });
-
-  // 4. INTENTAR 3 MÉTODOS DIFERENTES
-  alert(
-    `✅ ¡LISTO ${nombre.toUpperCase()}!\n\nSe abrirá WhatsApp en 3 segundos...\n\nSi no se abre:\n1. Acepta ventanas emergentes\n2. O escribe al: +57 ${MI_NUMERO}`,
-  );
-
-  // Método 1: Nueva ventana
+  // Si falla, INTENTO 2: Redirección directa después de 1 segundo
   setTimeout(() => {
-    const ventana = window.open(
-      url1,
-      "_blank",
-      "noopener,noreferrer,width=600,height=700",
+    if (
+      !nuevaVentana ||
+      nuevaVentana.closed ||
+      typeof nuevaVentana.closed === "undefined"
+    ) {
+      console.log("⚠️ Ventana bloqueada, redirigiendo...");
+      window.location.href = urlWhatsApp;
+    }
+  }, 1000);
+
+  // Limpiar formulario si existe
+  if (nombreInput && telefonoInput) {
+    nombreInput.value = "";
+    telefonoInput.value = "";
+  }
+
+  // Mensaje de confirmación
+  setTimeout(() => {
+    alert(
+      `✅ ¡Perfecto ${nombre}!\n\nSe está abriendo WhatsApp con tus datos.\n\nSi no se abre automáticamente:\n1. Busca este número: +57 ${NUMERO_WHATSAPP}\n2. O escribe manualmente el mensaje.`,
     );
-
-    // Si falla, Método 2: Cambiar ubicación
-    setTimeout(() => {
-      if (!ventana || ventana.closed || typeof ventana.closed == "undefined") {
-        console.log("Método 1 falló, intentando Método 2...");
-        window.location.href = url2;
-      }
-    }, 1000);
-
-    // Si falla, Método 3: WhatsApp Web
-    setTimeout(() => {
-      if (document.hidden === false) {
-        console.log("Método 2 falló, intentando Método 3...");
-        window.open(url3, "_blank");
-      }
-    }, 2000);
-
-    // Si todo falla, mostrar datos para copiar
-    setTimeout(() => {
-      alert(
-        `📋 COPIA ESTOS DATOS:\n\nNúmero: +57 ${MI_NUMERO}\n\nMensaje:\n${mensaje}\n\nPresiona OK para copiar al portapapeles`,
-      );
-
-      // Copiar al portapapeles
-      navigator.clipboard
-        .writeText(mensaje)
-        .then(() => {
-          alert("✅ Mensaje copiado al portapapeles. Pégalo en WhatsApp.");
-        })
-        .catch(() => {
-          // Método alternativo para copiar
-          const textArea = document.createElement("textarea");
-          textArea.value = mensaje;
-          document.body.appendChild(textArea);
-          textArea.select();
-          document.execCommand("copy");
-          document.body.removeChild(textArea);
-          alert("✅ Mensaje copiado. Pégalo en WhatsApp.");
-        });
-    }, 3000);
-  }, 3000); // Esperar 3 segundos para que el usuario vea el mensaje
-
-  // 5. LIMPIAR FORMULARIO
-  if (document.getElementById("nombre")) {
-    document.getElementById("nombre").value = "";
-  }
-  if (document.getElementById("telefono")) {
-    document.getElementById("telefono").value = "";
-  }
-
-  console.log("✅ Proceso de WhatsApp completado");
+  }, 500);
 }
 
-// FUNCIÓN DE PRUEBA INMEDIATA
-function pruebaWhatsAppInmediata() {
-  console.log("🧪 PRUEBA RÁPIDA DE WHATSAPP");
+// Hacer función global
+window.contactar = contactar;
 
-  const mensaje = `PRUEBA: Estoy probando el catálogo desde ${window.location.href}`;
-  const url = `https://wa.me/${MI_NUMERO}?text=${encodeURIComponent(mensaje)}`;
-
-  // Forzar apertura
-  const ventana = window.open(
-    url,
-    "WhatsAppTest",
-    "width=800,height=600,scrollbars=yes",
-  );
-
-  if (ventana) {
-    console.log("✅ WhatsApp abierto exitosamente");
-    ventana.focus();
-  } else {
-    // Si está bloqueado, redirigir directamente
-    console.log("⚠️ Pop-up bloqueado, redirigiendo...");
-    window.location.href = url;
-  }
-}
-
-// FUNCIÓN SUPER SIMPLE (método más básico)
-function whatsappDirecto(producto) {
-  const nombre = prompt("Tu nombre:", "Cliente");
-  if (!nombre) return;
-
-  const telefono = prompt("Tu WhatsApp:", "3001234567");
-  if (!telefono) return;
-
-  const mensaje = `Hola, soy ${nombre} (${telefono}). Me interesa ${producto}`;
-  window.location.href = `https://wa.me/${MI_NUMERO}?text=${encodeURIComponent(mensaje)}`;
-}
-
-// EXPORTAR FUNCIONES
-window.contactar = abrirWhatsApp;
-window.probarWhatsApp = pruebaWhatsAppInmediata;
-window.whatsappDirecto = whatsappDirecto;
-window.abrirWhatsApp = abrirWhatsApp;
-
-console.log("🚀 Funciones disponibles:");
-console.log("1. contactar('producto')");
-console.log("2. probarWhatsApp()");
-console.log("3. whatsappDirecto('producto')");
-console.log("4. abrirWhatsApp('producto')");
+console.log("🚀 Función 'contactar()' disponible");
