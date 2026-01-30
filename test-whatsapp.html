@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TEST WHATSAPP</title>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial; text-align: center; padding: 50px; }
+        button { 
+            background: #25D366; 
+            color: white; 
+            border: none; 
+            padding: 20px 40px; 
+            font-size: 24px; 
+            margin: 20px; 
+            cursor: pointer; 
+            border-radius: 10px;
+        }
+        .red { background: red; }
+        .blue { background: blue; }
+    </style>
+</head>
+<body>
+    <h1>🔴 TEST WHATSAPP - 100% FUNCIONAL</h1>
+    
+    <!-- MÉTODO 1: Directo con JavaScript -->
+    <button onclick="window.location.href='https://wa.me/573003953447?text=Hola, estoy probando el catálogo'">
+        🔥 MÉTODO 1: WhatsApp Directo
+    </button>
+    
+    <!-- MÉTODO 2: Con formulario -->
+    <button onclick="abrirWhatsAppTest()" class="red">
+        ⚡ MÉTODO 2: Con Prompt
+    </button>
+    
+    <!-- MÉTODO 3: Enlace directo -->
+    <a href="https://wa.me/573003953447?text=Hola, quiero información de perfumes" target="_blank">
+        <button class="blue">
+            💬 MÉTODO 3: Enlace HTML
+        </button>
+    </a>
+    
+    <script>
+        // Función de prueba
+        function abrirWhatsAppTest() {
+            const nombre = prompt("Tu nombre:", "Cliente");
+            const telefono = prompt("Tu WhatsApp:", "3001234567");
+            
+            if (nombre && telefono) {
+                const mensaje = `Nombre: ${nombre}\nTeléfono: ${telefono}\nMensaje: Quiero información de perfumes`;
+                window.open(`https://wa.me/573003953447?text=${encodeURIComponent(mensaje)}`, '_blank');
+            }
+        }
+        
+        // Mostrar ayuda
+        console.log("✅ Test WhatsApp cargado");
+        console.log("🔗 URL de prueba: https://wa.me/573003953447");
+    </script>
+</body>
+</html>

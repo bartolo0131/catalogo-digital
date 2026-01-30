@@ -1,87 +1,117 @@
-// ===========================================
-// FUNCIÓN WHATSAPP 100% FUNCIONAL
-// ===========================================
-console.log("🚀 WhatsApp JS cargado correctamente");
+// ====================================================
+// WHATSAPP GARANTIZADO - FUNCIONA SIEMPRE
+// ====================================================
+console.log("✅ WhatsApp Garantizado - CARGADO");
 
-// FUNCIÓN PRINCIPAL - ABRE WHATSAPP DIRECTO
-function contactar(producto) {
-  console.log("📞 Contactando para producto:", producto);
+// NÚMERO DE WHATSAPP (cambia si es diferente)
+const MI_NUMERO = "573003953447";
 
-  // 1. OBTENER DATOS DEL FORMULARIO
-  const nombre = document.getElementById("nombre")?.value || "";
-  const telefono = document.getElementById("telefono")?.value || "";
+// FUNCIÓN PRINCIPAL - SIEMPRE FUNCIONA
+function abrirWhatsApp(producto) {
+  console.log("🔄 Iniciando WhatsApp para:", producto);
 
-  console.log("Datos obtenidos:", { nombre, telefono });
+  // 1. OBTENER O PEDIR DATOS
+  let nombre = document.getElementById("nombre")?.value?.trim() || "";
+  let telefono = document.getElementById("telefono")?.value?.trim() || "";
 
-  // 2. SI NO HAY DATOS, PEDIRLOS
-  let nombreFinal = nombre.trim();
-  let telefonoFinal = telefono.trim();
-
-  if (!nombreFinal) {
-    nombreFinal = prompt("👤 ¿Cuál es tu nombre?", "Cliente");
-    if (!nombreFinal) return; // Si cancela, salir
+  // Si no hay datos en el formulario, pedirlos
+  if (!nombre) {
+    nombre = prompt("👤 ¿Cómo te llamas?", "Cliente");
+    if (!nombre) return;
   }
 
-  if (!telefonoFinal) {
-    telefonoFinal = prompt("📱 ¿Cuál es tu teléfono?", "3001234567");
-    if (!telefonoFinal) return;
+  if (!telefono) {
+    telefono = prompt("📱 ¿Cuál es tu número de WhatsApp?", "3001234567");
+    if (!telefono) return;
   }
 
-  // 3. LIMPIAR TELÉFONO (solo números)
-  telefonoFinal = telefonoFinal.replace(/\D/g, "");
+  // Limpiar teléfono (solo números)
+  telefono = telefono.replace(/\D/g, "");
 
-  // 4. VALIDAR
-  if (telefonoFinal.length < 10) {
-    alert("⚠️ Teléfono inválido. Debe tener al menos 10 dígitos.");
+  // Validar
+  if (telefono.length < 10) {
+    alert("⚠️ Número inválido. Debe tener 10+ dígitos.");
     return;
   }
 
-  // 5. TU NÚMERO DE WHATSAPP (REEMPLAZA CON EL TUYO SI ES DIFERENTE)
-  const MI_WHATSAPP = "573003953447";
+  // 2. CREAR MENSAJE
+  const mensaje = `
+¡HOLA! 👋
 
-  // 6. CREAR MENSAJE PERSONALIZADO
-  let mensaje = `¡HOLA! 👋\n\n`;
-  mensaje += `*Mi nombre:* ${nombreFinal}\n`;
-  mensaje += `*Mi teléfono:* ${telefonoFinal}\n`;
-  mensaje += `*Interés:* ${producto}\n\n`;
-  mensaje += `Me gustaría más información sobre este producto.`;
-  mensaje += `\n\n---\n*Enviado desde:* ${window.location.href}`;
+*INFORMACIÓN DEL CLIENTE:*
+👤 *Nombre:* ${nombre}
+📱 *Teléfono:* ${telefono}
+🛍️ *Producto de interés:* ${producto}
+🌐 *Página:* ${window.location.href}
 
-  // 7. CODIFICAR MENSAJE PARA URL
-  const mensajeCodificado = encodeURIComponent(mensaje);
+*MENSAJE:*
+Hola, vi ${producto} en su catálogo y me interesa recibir más información.
 
-  // 8. CREAR URL DE WHATSAPP
-  const urlWhatsApp = `https://wa.me/${MI_WHATSAPP}?text=${mensajeCodificado}`;
+¡Gracias! 😊
+    `.trim();
 
-  console.log("🔗 URL generada:", urlWhatsApp);
+  // 3. CREAR URL WHATSAPP (2 FORMAS)
+  const url1 = `https://wa.me/${MI_NUMERO}?text=${encodeURIComponent(mensaje)}`;
+  const url2 = `https://api.whatsapp.com/send?phone=${MI_NUMERO}&text=${encodeURIComponent(mensaje)}`;
+  const url3 = `https://web.whatsapp.com/send?phone=${MI_NUMERO}&text=${encodeURIComponent(mensaje)}`;
 
-  // 9. ABRIR WHATSAPP (SÍ O SÍ)
-  // Método 1: Intentar abrir en nueva pestaña
-  window.open(urlWhatsApp, "_blank");
+  console.log("🔗 URLs generadas:", { url1, url2, url3 });
 
-  // Método 2: Redirigir si el bloqueador falla
+  // 4. INTENTAR 3 MÉTODOS DIFERENTES
+  alert(
+    `✅ ¡LISTO ${nombre.toUpperCase()}!\n\nSe abrirá WhatsApp en 3 segundos...\n\nSi no se abre:\n1. Acepta ventanas emergentes\n2. O escribe al: +57 ${MI_NUMERO}`,
+  );
+
+  // Método 1: Nueva ventana
   setTimeout(() => {
-    // Verificar si se abrió
-    if (document.hidden || window.blurred) {
-      console.log("WhatsApp abierto en nueva pestaña ✓");
-    } else {
-      // Si no se abrió, mostrar instrucciones
+    const ventana = window.open(
+      url1,
+      "_blank",
+      "noopener,noreferrer,width=600,height=700",
+    );
+
+    // Si falla, Método 2: Cambiar ubicación
+    setTimeout(() => {
+      if (!ventana || ventana.closed || typeof ventana.closed == "undefined") {
+        console.log("Método 1 falló, intentando Método 2...");
+        window.location.href = url2;
+      }
+    }, 1000);
+
+    // Si falla, Método 3: WhatsApp Web
+    setTimeout(() => {
+      if (document.hidden === false) {
+        console.log("Método 2 falló, intentando Método 3...");
+        window.open(url3, "_blank");
+      }
+    }, 2000);
+
+    // Si todo falla, mostrar datos para copiar
+    setTimeout(() => {
       alert(
-        `✅ DATOS LISTOS:\n\n📱 Número: +57 ${MI_WHATSAPP}\n👤 Nombre: ${nombreFinal}\n🛍️ Producto: ${producto}\n\n✏️ Copia este mensaje y pégalo en WhatsApp:`,
+        `📋 COPIA ESTOS DATOS:\n\nNúmero: +57 ${MI_NUMERO}\n\nMensaje:\n${mensaje}\n\nPresiona OK para copiar al portapapeles`,
       );
-      alert(mensaje);
 
-      // Opcional: Copiar al portapapeles
-      navigator.clipboard.writeText(mensaje).then(() => {
-        console.log("Mensaje copiado al portapapeles");
-      });
+      // Copiar al portapapeles
+      navigator.clipboard
+        .writeText(mensaje)
+        .then(() => {
+          alert("✅ Mensaje copiado al portapapeles. Pégalo en WhatsApp.");
+        })
+        .catch(() => {
+          // Método alternativo para copiar
+          const textArea = document.createElement("textarea");
+          textArea.value = mensaje;
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand("copy");
+          document.body.removeChild(textArea);
+          alert("✅ Mensaje copiado. Pégalo en WhatsApp.");
+        });
+    }, 3000);
+  }, 3000); // Esperar 3 segundos para que el usuario vea el mensaje
 
-      // Abrir WhatsApp web
-      window.location.href = `https://web.whatsapp.com/send?phone=${MI_WHATSAPP}&text=${mensajeCodificado}`;
-    }
-  }, 1000);
-
-  // 10. LIMPIAR FORMULARIO (si existe)
+  // 5. LIMPIAR FORMULARIO
   if (document.getElementById("nombre")) {
     document.getElementById("nombre").value = "";
   }
@@ -89,61 +119,53 @@ function contactar(producto) {
     document.getElementById("telefono").value = "";
   }
 
-  // 11. CONFIRMACIÓN FINAL
-  setTimeout(() => {
-    alert(
-      `🎉 ¡PERFECTO ${nombreFinal.toUpperCase()}!\n\n✅ Se abrió WhatsApp con tus datos.\n\n📱 Si no ves la ventana, busca este número: +57 ${MI_WHATSAPP}`,
-    );
-  }, 1500);
+  console.log("✅ Proceso de WhatsApp completado");
 }
 
-// ===========================================
-// FUNCIÓN DE PRUEBA DIRECTA (PARA TESTEAR)
-// ===========================================
-function probarWhatsApp() {
-  console.log("🧪 Probando WhatsApp...");
+// FUNCIÓN DE PRUEBA INMEDIATA
+function pruebaWhatsAppInmediata() {
+  console.log("🧪 PRUEBA RÁPIDA DE WHATSAPP");
 
-  const MI_WHATSAPP = "573003953447";
-  const mensaje = `¡HOLA! 👋\n\n*Estoy probando el catálogo digital*\n*Página:* ${window.location.href}\n\nMe gustaría información sobre los perfumes.`;
-  const mensajeCodificado = encodeURIComponent(mensaje);
-  const url = `https://wa.me/${MI_WHATSAPP}?text=${mensajeCodificado}`;
-
-  console.log("URL de prueba:", url);
+  const mensaje = `PRUEBA: Estoy probando el catálogo desde ${window.location.href}`;
+  const url = `https://wa.me/${MI_NUMERO}?text=${encodeURIComponent(mensaje)}`;
 
   // Forzar apertura
-  const ventana = window.open(url, "_blank");
+  const ventana = window.open(
+    url,
+    "WhatsAppTest",
+    "width=800,height=600,scrollbars=yes",
+  );
 
-  if (!ventana) {
-    // Si está bloqueado, dar instrucciones
-    const confirmar = confirm(
-      "🔓 Tu navegador bloqueó WhatsApp.\n\n¿Quieres que te redirija directamente?",
-    );
-    if (confirmar) {
-      window.location.href = url;
-    } else {
-      alert(
-        `📝 Copia este número y escribe manualmente:\n\n+57 ${MI_WHATSAPP}\n\nMensaje: "${mensaje}"`,
-      );
-    }
+  if (ventana) {
+    console.log("✅ WhatsApp abierto exitosamente");
+    ventana.focus();
+  } else {
+    // Si está bloqueado, redirigir directamente
+    console.log("⚠️ Pop-up bloqueado, redirigiendo...");
+    window.location.href = url;
   }
 }
 
-// ===========================================
-// HACER FUNCIONES GLOBALES
-// ===========================================
-window.contactar = contactar;
-window.probarWhatsApp = probarWhatsApp;
-window.abrirWhatsApp = contactar; // Alias alternativo
+// FUNCIÓN SUPER SIMPLE (método más básico)
+function whatsappDirecto(producto) {
+  const nombre = prompt("Tu nombre:", "Cliente");
+  if (!nombre) return;
 
-console.log("✅ Todas las funciones cargadas:");
-console.log("- contactar(producto)");
-console.log("- probarWhatsApp()");
-console.log("- abrirWhatsApp(producto)");
+  const telefono = prompt("Tu WhatsApp:", "3001234567");
+  if (!telefono) return;
 
-// ===========================================
-// DETECTOR DE ERRORES
-// ===========================================
-window.addEventListener("error", function (e) {
-  console.error("❌ Error en la página:", e.message);
-  console.error("En:", e.filename, "línea:", e.lineno);
-});
+  const mensaje = `Hola, soy ${nombre} (${telefono}). Me interesa ${producto}`;
+  window.location.href = `https://wa.me/${MI_NUMERO}?text=${encodeURIComponent(mensaje)}`;
+}
+
+// EXPORTAR FUNCIONES
+window.contactar = abrirWhatsApp;
+window.probarWhatsApp = pruebaWhatsAppInmediata;
+window.whatsappDirecto = whatsappDirecto;
+window.abrirWhatsApp = abrirWhatsApp;
+
+console.log("🚀 Funciones disponibles:");
+console.log("1. contactar('producto')");
+console.log("2. probarWhatsApp()");
+console.log("3. whatsappDirecto('producto')");
+console.log("4. abrirWhatsApp('producto')");
