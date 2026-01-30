@@ -1,28 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Catálogo Hombre</title>
-  <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Perfumes</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <h1>Catálogo de Perfumes</h1>
+        <nav class="menu">
+            <a href="hombre.html" class="card">👨 Para Hombre</a>
+            <a href="mujer.html" class="card">👩 Para Mujer</a>
+        </nav>
+    </header>
 
-<h2>Colección Hombre</h2>
+    <main>
+        <h2 id="titulo-catalogo">Perfumes para Hombre</h2> <!-- Cambiar según página -->
+        
+        <form id="form-contacto">
+            <input type="text" id="nombre" placeholder="Tu nombre" required>
+            <input type="tel" id="telefono" placeholder="Tu teléfono" required>
+        </form>
+        
+        <div class="catalogo" id="catalogo-hombre">
+            <!-- Los productos se cargarán aquí -->
+        </div>
+    </main>
 
-<form id="lead-form">
-  <input type="text" id="nombre" placeholder="Tu nombre" required>
-  <input type="tel" id="telefono" placeholder="Tu teléfono" required>
-</form>
+    <footer>
+        <p>© 2024 Catálogo Digital - Todos los derechos reservados</p>
+        <p>📞 Contacto: +57 300 395 3447</p>
+    </footer>
 
-<div id="catalogo-hombre" class="catalogo"></div>
-
-
-
-<script src="./js/catalogo.js"></script>
-<script src="./js/whatsapp.js"></script>
-
-
+    <script src="catalogo.js"></script>
+    <script src="whatsapp.js"></script>
+    
+    <script>
+        // Actualizar título dinámicamente
+        document.addEventListener('DOMContentLoaded', function() {
+            const path = window.location.pathname;
+            const titulo = document.getElementById('titulo-catalogo');
+            
+            if (path.includes('/mujer')) {
+                titulo.textContent = 'Perfumes para Mujer';
+            } else if (path.includes('/hombre')) {
+                titulo.textContent = 'Perfumes para Hombre';
+            }
+        });
+    </script>
 </body>
-
-
 </html>
+<footer>
+  <p>&copy; 2026 Catálogo Digital. Todos los derechos reservados.</p>
