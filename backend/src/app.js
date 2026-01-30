@@ -1,18 +1,18 @@
 
-
 const express = require("express");
-const cors = require("cors");
-
 const app = express();
 
-app.use(cors());
 app.use(express.json());
-app.use("/api/leads", require("./routes/leads.routes"));
 
-app.use("/api/productos", require("./routes/productos.routes"));
+// 👇 IMPORTAS RUTAS
+const productosRoutes = require("./routes/productos.routes");
 
+// 👇 MONTAJE DE RUTAS (ESTO TE FALTABA)
+app.use("/api/productos", productosRoutes);
+
+// Ruta test (opcional pero recomendada)
 app.get("/", (req, res) => {
-  res.send("API funcionando");
+  res.send("Backend funcionando OK");
 });
 
 module.exports = app;
