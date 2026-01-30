@@ -1,27 +1,47 @@
-// En la función cargarCatalogo, dentro del forEach:
-productos.forEach((p) => {
-  const div = document.createElement("div");
-  div.classList.add("card");
+console.log("✅ catalogo.js cargado");
 
-  const nombreSeguro = p.nombre.replace(/'/g, "\\'");
+// Configuración
+const API_URL = "https://catalogo-digital-fu1l.onrender.com/api";
 
-  div.innerHTML = `
-    <div class="card-content">
-      <h3>${p.nombre}</h3>
-      <p class="descripcion">${p.descripcion || "Descripción no disponible"}</p>
-      ${p.precio ? `<p class="precio">$${parseFloat(p.precio).toFixed(2)}</p>` : ""}
-      
-      <div class="card-buttons">
-        <button onclick="contactar('${nombreSeguro}')" class="btn-info">
-          📝 Solicitar información
+async function cargarCatalogo(genero) {
+  const contenedor = document.getElementById(`catalogo-${genero}`);
+  if (!contenedor) return;
+
+  contenedor.innerHTML = "<p>Cargando productos...</p>";
+
+  try {
+    const response = await fetch(`${API_URL}/productos/${genero}`);
+    const productos = await response.json();
+
+    contenedor.innerHTML = "";
+
+    productos.forEach((p) => {
+      const div = document.createElement("div");
+      div.className = "card";
+
+      // Escapar comillas para evitar errores
+      const nombreProducto = p.nombre.replace(/'/g, "&#39;");
+
+      div.innerHTML = `
+        <h3>${p.nombre}</h3>
+        <p>${p.descripcion || ""}</p>
+        <button onclick="contactar('${p.nombre}')">
+          💬 Contactar por WhatsApp
         </button>
-        
-        <button onclick="contactarDirecto('${nombreSeguro}')" class="btn-whatsapp">
-          💬 WhatsApp Directo
-        </button>
-      </div>
-    </div>
-  `;
+      `;
 
-  contenedor.appendChild(div);
-});
+      contenedor.appendChild(div);
+    });
+  } catch (error) {
+    console.error("Error:", error);
+    contenedor.innerHTML = "<p>Error al cargar productos</p>";
+  }
+}
+
+// Cargar automáticamente
+if (document.getElementById("catalogo-hombre")) {
+  cargarCatalogo("hombre");
+}
+if (document.getElementById("catalogo-mujer")) {
+  cargarCatalogo("mujer");
+}

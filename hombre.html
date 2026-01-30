@@ -3,115 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Perfumes</title>
+    <title>Perfumes para Hombre</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Estilos adicionales */
-        .botones-accion {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-        
-        .btn-whatsapp-directo {
-            background: #25D366;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: transform 0.2s;
-        }
-        
-        .btn-whatsapp-directo:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-        }
-        
-        .btn-contacto-general {
-            background: #3498db;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .whatsapp-icon {
-            font-size: 20px;
-        }
-    </style>
 </head>
 <body>
     <header>
-        <h1>Catálogo de Perfumes</h1>
+        <h1>💎 Catálogo de Perfumes Exclusivos</h1>
         <nav class="menu">
-            <a href="hombre.html" class="card">👨 Para Hombre</a>
-            <a href="mujer.html" class="card">👩 Para Mujer</a>
-            <button onclick="contactarGeneral()" class="card" style="background: #25D366;">
-                <span class="whatsapp-icon">💬</span> Contactar
-            </button>
+            <a href="hombre.html">👨 Para Hombre</a>
+            <a href="mujer.html">👩 Para Mujer</a>
         </nav>
     </header>
-
+    
     <main>
-        <h2 id="titulo-catalogo">Perfumes para Hombre</h2>
+        <h2>Perfumes para Hombre</h2>
         
-        <!-- Botones de acción rápida -->
-        <div class="botones-accion">
-            <button onclick="contactarGeneral()" class="btn-contacto-general">
-                <span>📞</span> Contacto General
-            </button>
-            
-            <button onclick="contactarDirecto('Consulta General')" class="btn-whatsapp-directo">
-                <span class="whatsapp-icon">💬</span> WhatsApp Directo
-            </button>
-        </div>
-        
+        <!-- FORMULARIO -->
         <form id="form-contacto">
             <input type="text" id="nombre" placeholder="Tu nombre completo" required>
             <input type="tel" id="telefono" placeholder="Tu teléfono (ej: 3001234567)" required>
-            <p class="form-hint">Completa estos datos para solicitar información específica</p>
         </form>
         
+        <!-- CATÁLOGO -->
         <div class="catalogo" id="catalogo-hombre">
-            <!-- Los productos se cargarán aquí -->
+            <!-- Los productos se cargarán aquí automáticamente -->
         </div>
     </main>
-
-    <footer>
-        <p>© 2024 Catálogo Digital - Todos los derechos reservados</p>
-        <p>📞 Contacto: +57 300 395 3447</p>
-        <button onclick="contactarGeneral()" style="background: #25D366; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 10px;">
-            💬 Contactar por WhatsApp
-        </button>
+    
+    <footer style="text-align: center; margin-top: 50px; color: #666;">
+        <p>📞 WhatsApp: +57 300 395 3447</p>
+        <p>© 2024 - Todos los derechos reservados</p>
     </footer>
-
+    
+    <!-- IMPORTAR SCRIPTS -->
     <script src="catalogo.js"></script>
     <script src="whatsapp.js"></script>
     
     <script>
-        // Actualizar título dinámicamente
-        document.addEventListener('DOMContentLoaded', function() {
-            const path = window.location.pathname;
-            const titulo = document.getElementById('titulo-catalogo');
-            
-            if (path.includes('/mujer')) {
-                titulo.textContent = 'Perfumes para Mujer';
-            } else if (path.includes('/hombre')) {
-                titulo.textContent = 'Perfumes para Hombre';
-            }
-        });
+        // Cambiar título según página
+        if (window.location.pathname.includes('mujer')) {
+            document.querySelector('h2').textContent = 'Perfumes para Mujer';
+            document.title = 'Perfumes para Mujer';
+        }
     </script>
 </body>
 </html>
