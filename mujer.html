@@ -1,28 +1,92 @@
-<!-- Solo cambia estos elementos respecto a hombre.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfumes para Mujer - Catálogo Digital</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>💎 CATÁLOGO DE PERFUMES</h1>
+        <nav class="menu">
+            <a href="index.html" class="menu-inicio">🏠 INICIO</a>
+            <a href="hombre.html" class="menu-hombre">👨 HOMBRE</a>
+            <a href="mujer.html" class="menu-mujer">👩 MUJER</a>
+            <a href="javascript:void(0);" onclick="contactar('Consulta General')" class="menu-whatsapp">💬 WHATSAPP</a>
+        </nav>
+    </header>
 
-1. En el título:
-<title>Perfumes para Mujer - Catálogo Digital</title>
+    <main>
+        <h1 class="titulo-pagina">PERFUMES EXCLUSIVOS PARA MUJER</h1>
+        
+        <!-- BOTÓN DE PRUEBA -->
+        <button onclick="probarWhatsApp()" class="btn-prueba">
+            🔥 PROBAR WHATSAPP AHORA
+        </button>
 
-2. En el menú (cambia el enlace activo):
-<a href="mujer.html" style="color: #e84393; margin: 0 15px; text-decoration: none; font-weight: bold;">👩 Mujer</a>
+        <!-- FORMULARIO -->
+        <div class="formulario-contacto">
+            <h3>📝 COMPLETA TUS DATOS</h3>
+            <div class="input-group">
+                <label for="nombre">👤 Tu Nombre</label>
+                <input type="text" id="nombre" placeholder="Ej: María González" required>
+            </div>
+            <div class="input-group">
+                <label for="telefono">📱 Tu WhatsApp</label>
+                <input type="tel" id="telefono" placeholder="Ej: 3001234567" required>
+            </div>
+            <button onclick="contactar('Catálogo completo Mujer')" class="btn-whatsapp">
+                💬 CONTACTAR POR WHATSAPP
+            </button>
+        </div>
 
-3. En el título principal:
-<h1 class="catalogo-titulo">PERFUMES EXCLUSIVOS PARA MUJER</h1>
+        <!-- CATÁLOGO -->
+        <div class="catalogo-container">
+            <h2 style="text-align: center; color: #2c3e50; margin-bottom: 20px;">
+                🛍️ COLECCIÓN EXCLUSIVA PARA MUJER
+            </h2>
+            
+            <!-- AQUÍ SE CARGARÁ EL CATÁLOGO -->
+            <div id="catalogo-mujer">
+                <!-- El JavaScript cargará los productos aquí -->
+            </div>
+            
+            <!-- BOTÓN DE RECARGA -->
+            <div style="text-align: center; margin-top: 40px;">
+                <button onclick="cargarCatalogo('mujer')" 
+                        style="background: #e84393; color: white; border: none; padding: 12px 25px; 
+                               border-radius: 8px; cursor: pointer; font-size: 1rem;">
+                    🔄 RECARGAR CATÁLOGO
+                </button>
+            </div>
+        </div>
+    </main>
 
-4. En el botón de prueba:
-<button onclick="contactar('Prueba Catálogo Mujer')">
+    <footer>
+        <h3>📞 CONTACTO DIRECTO</h3>
+        <p style="font-size: 1.2rem; margin: 20px 0;">
+            <strong>WhatsApp: +57 300 395 3447</strong>
+        </p>
+        <button onclick="contactar('Consulta desde el footer')" class="whatsapp-footer">
+            💬 ESCRIBIR POR WHATSAPP
+        </button>
+        <p style="margin-top: 20px; color: #bdc3c7;">
+            © 2024 - Catálogo Digital - Todos los derechos reservados
+        </p>
+    </footer>
 
-5. En el script final (cambia el género):
-<script>
-    // ... resto del código igual ...
+    <!-- SCRIPTS -->
+    <script src="whatsapp.js"></script>
+    <script src="catalogo.js"></script>
     
-    // Forzar recarga después de 2 segundos si no se cargó
-    setTimeout(() => {
-        if (contenedor && contenedor.innerHTML.trim() === '') {
-            console.log("🔄 Forzando carga del catálogo MUJER...");
-            if (typeof cargarCatalogo === 'function') {
-                cargarCatalogo('mujer');  // <- CAMBIA AQUÍ
-            }
-        }
-    }, 2000);
-</script>
+    <!-- VERIFICACIÓN -->
+    <script>
+        console.log("✅ Página mujer.html cargada");
+        console.log("🔍 Verificando funciones:");
+        console.log("- contactar:", typeof contactar);
+        console.log("- cargarCatalogo:", typeof cargarCatalogo);
+        console.log("- probarWhatsApp:", typeof probarWhatsApp);
+    </script>
+</body>
+</html>

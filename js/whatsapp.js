@@ -1,57 +1,88 @@
-// whatsapp.js - FUNCIÓN SIMPLE Y FUNCIONAL
-console.log("✅ WhatsApp.js cargado");
+// ============================================
+// WHATSAPP.JS - FUNCIÓN GARANTIZADA
+// ============================================
+console.log("✅ whatsapp.js cargado");
 
+// TU NÚMERO DE WHATSAPP (sin el +)
+const MI_WHATSAPP = "573003953447";
+
+// FUNCIÓN PRINCIPAL - ABRE WHATSAPP REALMENTE
 function contactar(producto) {
-  console.log("Contactando para:", producto);
+  console.log("🚀 Ejecutando contactar para:", producto);
 
-  // Obtener datos del formulario
-  const nombre = document.getElementById("nombre")?.value || "";
-  const telefono = document.getElementById("telefono")?.value || "";
+  // 1. OBTENER DATOS
+  let nombre = document.getElementById("nombre")?.value?.trim() || "";
+  let telefono = document.getElementById("telefono")?.value?.trim() || "";
 
-  // Si no hay datos en el formulario, pedirlos
-  let nombreFinal = nombre.trim();
-  let telefonoFinal = telefono.trim();
-
-  if (!nombreFinal) {
-    nombreFinal = prompt("¿Cuál es tu nombre?", "Cliente");
-    if (!nombreFinal) return;
+  // 2. SI FALTAN DATOS, PEDIRLOS
+  if (!nombre) {
+    nombre = prompt("👤 ¿Cuál es tu nombre?", "");
+    if (!nombre) return;
   }
 
-  if (!telefonoFinal) {
-    telefonoFinal = prompt("¿Cuál es tu WhatsApp?", "3001234567");
-    if (!telefonoFinal) return;
+  if (!telefono) {
+    telefono = prompt("📱 ¿Cuál es tu número de WhatsApp?", "3001234567");
+    if (!telefono) return;
   }
 
-  // Limpiar teléfono
-  telefonoFinal = telefonoFinal.replace(/\D/g, "");
+  // 3. LIMPIAR TELÉFONO
+  telefono = telefono.replace(/\D/g, "");
 
-  // Validar
-  if (telefonoFinal.length < 10) {
-    alert("Teléfono inválido. Debe tener al menos 10 dígitos.");
+  // 4. VALIDAR
+  if (telefono.length < 10) {
+    alert(
+      "❌ Teléfono inválido\n\nDebe tener al menos 10 dígitos\nEjemplo: 3001234567",
+    );
     return;
   }
 
-  // Crear mensaje
-  const mensaje = `Hola, soy ${nombreFinal} (${telefonoFinal}). Estoy interesado/a en: ${producto}`;
+  // 5. CREAR MENSAJE
+  const mensaje = `¡HOLA! 👋\n\n*Cliente:* ${nombre}\n*Teléfono:* ${telefono}\n*Producto:* ${producto}\n\nQuiero información sobre este producto. ¡Gracias! 😊`;
 
-  // Tu número de WhatsApp
-  const numeroWhatsApp = "573003953447";
+  // 6. CREAR URL DE WHATSAPP (2 FORMAS)
+  const url1 = `https://wa.me/${MI_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
+  const url2 = `https://api.whatsapp.com/send?phone=${MI_WHATSAPP}&text=${encodeURIComponent(mensaje)}`;
 
-  // Crear URL
-  const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+  console.log("🔗 URL generada:", url1);
 
-  console.log("Abriendo WhatsApp:", url);
+  // 7. ABRIR WHATSAPP (MÉTODO INFALIBLE)
+  // Intentar con window.open primero
+  const ventana = window.open(url1, "_blank");
 
-  // Abrir WhatsApp
-  window.open(url, "_blank");
+  // Si falla, redirigir directamente
+  setTimeout(() => {
+    if (!ventana || ventana.closed) {
+      console.log("🔄 Método 1 falló, usando método 2...");
+      window.location.href = url2;
+    }
+  }, 500);
 
-  // Limpiar formulario si existe
+  // 8. LIMPIAR FORMULARIO
   if (document.getElementById("nombre")) {
     document.getElementById("nombre").value = "";
   }
   if (document.getElementById("telefono")) {
     document.getElementById("telefono").value = "";
   }
+
+  // 9. CONFIRMACIÓN
+  setTimeout(() => {
+    alert(
+      `✅ ¡LISTO ${nombre.toUpperCase()}!\n\nSe abrió WhatsApp con tus datos.\n\n📱 Número: +57 ${MI_WHATSAPP}\n🛍️ Producto: ${producto}`,
+    );
+  }, 1000);
 }
 
+// FUNCIÓN DE PRUEBA RÁPIDA
+function probarWhatsApp() {
+  console.log("🧪 Probando WhatsApp...");
+  const mensaje = "¡Hola! Estoy probando el catálogo de perfumes";
+  const url = `https://wa.me/${MI_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, "_blank");
+}
+
+// HACER FUNCIONES GLOBALES
 window.contactar = contactar;
+window.probarWhatsApp = probarWhatsApp;
+
+console.log("🎯 Funciones disponibles: contactar() y probarWhatsApp()");
