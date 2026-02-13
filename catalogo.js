@@ -7,10 +7,10 @@ console.log("✅ catalogo.js cargado");
 const productos = {
   hombre: [
     {
-      nombre: "SAUVAGE DIOR",
+      nombre: "DIESE PLUS ",
       descripcion:
         "Fragancia masculina fresca y amaderada con notas de bergamota",
-      precio: "120.000",
+      precio: "20000-30000",
       destacado: true,
     },
     {
