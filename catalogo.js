@@ -9,8 +9,8 @@ const productos = {
     {
       nombre: "DIESE PLUS ",
       descripcion:
-        "Fragancia masculina fresca y amaderada con notas de bergamota",
-      precio: "20000-30000",
+        "PUEDE DECIR LO QUE QUIERA ",
+      precio: "1 ONZA 20000-2 ONZAS30000",
       destacado: true,
     },
     {
