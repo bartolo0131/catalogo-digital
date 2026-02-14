@@ -453,104 +453,380 @@
 
 
     
-    <!-- SECCIÓN PRINCIPAL DE PRECIOS POR ONZA -->
-    <div class="precios-section">
-        <h2>💰 PRECIOS POR ONZA</h2>
-        <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">
-            Todos nuestros perfumes están disponibles en diferentes presentaciones.<br>
-            <strong>¡Elige la que mejor se adapte a ti!</strong>
+<!-- ======================================== -->
+<!-- PRECIOS POR ONZA - CHULOS ALINEADOS -->
+<!-- ======================================== -->
+
+<div style="
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 40px;
+    padding: 60px 30px;
+    margin: 50px auto;
+    max-width: 1200px;
+    color: white;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+">
+    <!-- TÍTULO -->
+    <div style="text-align: center; margin-bottom: 50px;">
+        <h2 style="
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        ">
+            💰 PRECIOS POR ONZA
+        </h2>
+        <div style="
+            width: 150px;
+            height: 4px;
+            background: white;
+            margin: 0 auto;
+            border-radius: 2px;
+        "></div>
+        <p style="
+            font-size: 1.2rem;
+            margin-top: 20px;
+            opacity: 0.9;
+        ">
+            Todos nuestros perfumes están disponibles en estas presentaciones
         </p>
-        
-        <div class="precios-grid">
-            <!-- 1 ONZA -->
-            <div class="precio-card">
-                <div class="onza">🥉</div>
-                <h3>1 ONZA</h3>
-                <div class="precio">
-                    $20.000 <small>COP</small>
-                </div>
-                <p class="descripcion">
-                    ✅ Ideal para probar<br>
-                    ✅ Tamaño de viaje<br>
-                    ✅ 30 ml aproximadamente
-                </p>
-                <button class="btn-pedir" onclick="contactar('1 Onza - $20.000')">
-                    💬 PEDIR 1 ONZA
-                </button>
-            </div>
-            
-            <!-- 2 ONZAS (DESTACADO) -->
-            <div class="precio-card destacado">
-                <div class="badge">MÁS VENDIDO</div>
-                <div class="onza">🥈</div>
-                <h3>2 ONZAS</h3>
-                <div class="precio">
-                    $30.000 <small>COP</small>
-                </div>
-                <p class="descripcion">
-                    ✅ Mejor relación precio/calidad<br>
-                    ✅ Tamaño estándar<br>
-                    ✅ 60 ml aproximadamente
-                </p>
-                <button class="btn-pedir" onclick="contactar('2 Onzas - $30.000 (Más Vendido)')">
-                    💬 PEDIR 2 ONZAS
-                </button>
-            </div>
-            
-            <!-- 3 ONZAS -->
-            <div class="precio-card">
-                <div class="onza">🥇</div>
-                <h3>3 ONZAS</h3>
-                <div class="precio">
-                    $50.000 <small>COP</small>
-                </div>
-                <p class="descripcion">
-                    ✅ Mayor duración<br>
-                    ✅ Tamaño familiar<br>
-                    ✅ 100 ml aproximadamente
-                </p>
-                <button class="btn-pedir" onclick="contactar('3 Onzas - $40.000')">
-                    💬 PEDIR 3 ONZAS
-                </button>
-            </div>
-        </div>
     </div>
     
-    <!-- INFORMACIÓN DETALLADA DE ONZAS -->
-    <div class="info-onzas">
-        <h3>📋 INFORMACIÓN DE NUESTRAS PRESENTACIONES</h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-            <div>
-                <h4 style="color: #2c3e50; margin-bottom: 10px;">🥉 1 ONZA (30ml) - $20.000</h4>
-                <ul>
-                    <li>Perfecto para conocer la fragancia</li>
-                    <li>Ideal para llevar en el bolsillo</li>
-                    <li>Duración aproximada: 1-2 meses</li>
-                    <li>Recomendado para viajes</li>
-                </ul>
+    <!-- CONTENEDOR DE TARJETAS (FLEXBOX PARA ALINEACIÓN) -->
+    <div style="
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        gap: 30px;
+        flex-wrap: wrap;
+    ">
+        
+        <!-- TARJETA 1 ONZA -->
+        <div style="
+            background: white;
+            border-radius: 30px;
+            padding: 40px 30px;
+            width: 300px;
+            color: #333;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s;
+        "
+        onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 25px 40px rgba(0,0,0,0.3)';"
+        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 15px 30px rgba(0,0,0,0.2)';"
+        >
+            <!-- ICONO Y TÍTULO -->
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div style="font-size: 4rem; margin-bottom: 10px;">🥉</div>
+                <h3 style="font-size: 2rem; color: #5D4A66;">1 ONZA</h3>
+                <div style="font-size: 1.1rem; color: #666;">30 ml</div>
             </div>
             
-            <div>
-                <h4 style="color: #2c3e50; margin-bottom: 10px;">🥈 2 ONZAS (60ml) - $30.000</h4>
-                <ul>
-                    <li>Nuestra presentación más popular</li>
-                    <li>Mejor relación calidad-precio</li>
-                    <li>Duración aproximada: 3-4 meses</li>
-                    <li>Ideal para uso diario</li>
-                </ul>
+            <!-- PRECIO -->
+            <div style="
+                background: #f0f0f0;
+                padding: 20px;
+                border-radius: 20px;
+                text-align: center;
+                margin-bottom: 25px;
+            ">
+                <span style="font-size: 2.5rem; font-weight: bold; color: #27ae60;">$20.000</span>
+                <span style="color: #666;"> COP</span>
             </div>
             
-            <div>
-                <h4 style="color: #2c3e50; margin-bottom: 10px;">🥇 3 ONZAS (100ml) - $50.000</h4>
-                <ul>
-                    <li>Máximo ahorro por ml</li>
-                    <li>Perfecto para tu fragancia favorita</li>
-                    <li>Duración aproximada: 5-6 meses</li>
-                    <li>Recomendado para uso frecuente</li>
-                </ul>
+            <!-- LISTA DE BENEFICIOS (TODOS CON LA MISMA ALTURA) -->
+            <div style="flex-grow: 1; margin-bottom: 25px;">
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                    min-height: 40px;
+                ">
+                    <span style="color: #27ae60; font-size: 1.5rem;">✓</span>
+                    <span>Ideal para probar</span>
+                </div>
+                
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                    min-height: 40px;
+                ">
+                    <span style="color: #27ae60; font-size: 1.5rem;">✓</span>
+                    <span>Tamaño de viaje</span>
+                </div>
+                
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                    min-height: 40px;
+                ">
+                    <span style="color: #27ae60; font-size: 1.5rem;">✓</span>
+                    <span>Perfecto para llevar</span>
+                </div>
+                
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                    min-height: 40px;
+                ">
+                    <span style="color: #27ae60; font-size: 1.5rem;">✓</span>
+                    <span>Duración: 1-2 meses</span>
+                </div>
             </div>
+            
+            <!-- BOTÓN -->
+            <button onclick="contactar('1 Onza - $20.000')" style="
+                background: #25D366;
+                color: white;
+                border: none;
+                padding: 15px;
+                border-radius: 50px;
+                font-size: 1.2rem;
+                font-weight: bold;
+                cursor: pointer;
+                width: 100%;
+                transition: all 0.3s;
+            "
+            onmouseover="this.style.background='#1DA851';"
+            onmouseout="this.style.background='#25D366';"
+            >
+                💬 SOLICITAR
+            </button>
+        </div>
+        
+        <!-- TARJETA 2 ONZAS (DESTACADA) -->
+        <div style="
+            background: white;
+            border-radius: 30px;
+            padding: 40px 30px;
+            width: 300px;
+            color: #333;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            transform: scale(1.05);
+            border: 3px solid gold;
+            position: relative;
+            transition: all 0.3s;
+        "
+        onmouseover="this.style.transform='scale(1.05) translateY(-10px)';"
+        onmouseout="this.style.transform='scale(1.05) translateY(0)';"
+        >
+            <!-- BADGE DE DESTACADO -->
+            <div style="
+                position: absolute;
+                top: -15px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: gold;
+                color: #333;
+                padding: 8px 20px;
+                border-radius: 30px;
+                font-weight: bold;
+                font-size: 1rem;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            ">
+                ⭐ MÁS VENDIDO
+            </div>
+            
+            <!-- ICONO Y TÍTULO -->
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div style="font-size: 4rem; margin-bottom: 10px;">🥈</div>
+                <h3 style="font-size: 2rem; color: #5D4A66;">2 ONZAS</h3>
+                <div style="font-size: 1.1rem; color: #666;">60 ml</div>
+            </div>
+            
+            <!-- PRECIO -->
+            <div style="
+                background: #f0f0f0;
+                padding: 20px;
+                border-radius: 20px;
+                text-align: center;
+                margin-bottom: 25px;
+            ">
+                <span style="font-size: 2.5rem; font-weight: bold; color: #27ae60;">$30.000</span>
+                <span style="color: #666;"> COP</span>
+            </div>
+            
+            <!-- LISTA DE BENEFICIOS -->
+            <div style="flex-grow: 1; margin-bottom: 25px;">
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                    min-height: 40px;
+                ">
+                    <span style="color: #27ae60; font-size: 1.5rem;">✓</span>
+                    <span>Mejor relación precio/calidad</span>
+                </div>
+                
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                    min-height: 40px;
+                ">
+                    <span style="color: #27ae60; font-size: 1.5rem;">✓</span>
+                    <span>Tamaño estándar</span>
+                </div>
+                
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                    min-height: 40px;
+                ">
+                    <span style="color: #27ae60; font-size: 1.5rem;">✓</span>
+                    <span>Ideal para uso diario</span>
+                </div>
+                
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                    min-height: 40px;
+                ">
+                    <span style="color: #27ae60; font-size: 1.5rem;">✓</span>
+                    <span>Duración: 3-4 meses</span>
+                </div>
+            </div>
+            
+            <!-- BOTÓN -->
+            <button onclick="contactar('2 Onzas - $30.000 (Más Vendido)')" style="
+                background: #25D366;
+                color: white;
+                border: none;
+                padding: 15px;
+                border-radius: 50px;
+                font-size: 1.2rem;
+                font-weight: bold;
+                cursor: pointer;
+                width: 100%;
+                transition: all 0.3s;
+            "
+            onmouseover="this.style.background='#1DA851';"
+            onmouseout="this.style.background='#25D366';"
+            >
+                💬 SOLICITAR
+            </button>
+        </div>
+        
+        <!-- TARJETA 3 ONZAS -->
+        <div style="
+            background: white;
+            border-radius: 30px;
+            padding: 40px 30px;
+            width: 300px;
+            color: #333;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s;
+        "
+        onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 25px 40px rgba(0,0,0,0.3)';"
+        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 15px 30px rgba(0,0,0,0.2)';"
+        >
+            <!-- ICONO Y TÍTULO -->
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div style="font-size: 4rem; margin-bottom: 10px;">🥇</div>
+                <h3 style="font-size: 2rem; color: #5D4A66;">3 ONZAS</h3>
+                <div style="font-size: 1.1rem; color: #666;">90 ml</div>
+            </div>
+            
+            <!-- PRECIO -->
+            <div style="
+                background: #f0f0f0;
+                padding: 20px;
+                border-radius: 20px;
+                text-align: center;
+                margin-bottom: 25px;
+            ">
+                <span style="font-size: 2.5rem; font-weight: bold; color: #27ae60;">$40.000</span>
+                <span style="color: #666;"> COP</span>
+            </div>
+            
+            <!-- LISTA DE BENEFICIOS -->
+            <div style="flex-grow: 1; margin-bottom: 25px;">
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                    min-height: 40px;
+                ">
+                    <span style="color: #27ae60; font-size: 1.5rem;">✓</span>
+                    <span>Máximo ahorro por ml</span>
+                </div>
+                
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                    min-height: 40px;
+                ">
+                    <span style="color: #27ae60; font-size: 1.5rem;">✓</span>
+                    <span>Tamaño familiar</span>
+                </div>
+                
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                    min-height: 40px;
+                ">
+                    <span style="color: #27ae60; font-size: 1.5rem;">✓</span>
+                    <span>Recomendado uso frecuente</span>
+                </div>
+                
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                    min-height: 40px;
+                ">
+                    <span style="color: #27ae60; font-size: 1.5rem;">✓</span>
+                    <span>Duración: 5-6 meses</span>
+                </div>
+            </div>
+            
+            <!-- BOTÓN -->
+            <button onclick="contactar('3 Onzas - $40.000')" style="
+                background: #25D366;
+                color: white;
+                border: none;
+                padding: 15px;
+                border-radius: 50px;
+                font-size: 1.2rem;
+                font-weight: bold;
+                cursor: pointer;
+                width: 100%;
+                transition: all 0.3s;
+            "
+            onmouseover="this.style.background='#1DA851';"
+            onmouseout="this.style.background='#25D366';"
+            >
+                💬 SOLICITAR
+            </button>
         </div>
     </div>
+</div>
+
+    
+    
     
     <!-- HERO CON LLAMADO A LA ACCIÓN -->
     <div class="hero">
