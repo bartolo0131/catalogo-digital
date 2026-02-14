@@ -452,19 +452,7 @@
         </div>
     </div>
     
-    <!-- FORMULARIO RÁPIDO -->
-    <div style="background: white; padding: 30px; border-radius: 15px; max-width: 500px; margin: 40px auto; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-        <h3 style="color: #2c3e50; margin-bottom: 20px;">📝 CONTACTO RÁPIDO</h3>
-        <div style="margin-bottom: 15px;">
-            <input type="text" id="nombre" placeholder="👤 Tu nombre" style="width: 100%; padding: 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
-        </div>
-        <div style="margin-bottom: 20px;">
-            <input type="tel" id="telefono" placeholder="📱 Tu WhatsApp" style="width: 100%; padding: 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
-        </div>
-        <button onclick="contactar('Consulta desde página principal')" class="whatsapp-footer" style="width: 100%;">
-            💬 CONTACTAR AHORA
-        </button>
-    </div>
+    
     
     <footer>
         <h3>📞 CONTACTO DIRECTO</h3>
@@ -499,19 +487,7 @@
                 console.error("⚠️ whatsapp.js no se cargó, creando función de emergencia");
                 
                 window.contactar = function(producto) {
-                    const nombre = prompt("👤 ¿Cuál es tu nombre?", "");
-                    if (!nombre) return;
-                    
-                    const telefono = prompt("📱 ¿Cuál es tu WhatsApp?", "3001234567");
-                    if (!telefono) return;
-                    
-                    const telefonoLimpio = telefono.replace(/\D/g, '');
-                    if (telefonoLimpio.length < 10) {
-                        alert("❌ Teléfono inválido. Debe tener 10+ dígitos.");
-                        return;
-                    }
-                    
-                    const mensaje = `Hola, soy ${nombre} (${telefonoLimpio}). Me interesa: ${producto}`;
+
                     window.open(`https://wa.me/573008813801?text=${encodeURIComponent(mensaje)}`, '_blank');
                 };
                 
