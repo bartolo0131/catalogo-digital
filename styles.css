@@ -1,8 +1,7 @@
 /* =========================================== */
-/* STYLES.CSS - ESTILOS COMPLETOS */
+/* STYLES.CSS - VERSIÓN COMPLETA */
 /* =========================================== */
 
-/* RESET Y BASE */
 * {
     margin: 0;
     padding: 0;
@@ -39,33 +38,25 @@ header h1 {
     flex-wrap: wrap;
 }
 
-.menu a {
+.menu a, .menu button {
     color: white;
     text-decoration: none;
     padding: 12px 25px;
     border-radius: 30px;
     font-weight: bold;
     transition: all 0.3s;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
-.menu a:hover {
+.menu a:nth-child(1) { background: #3498db; }
+.menu a:nth-child(2) { background: #e84393; }
+.menu button { background: #25D366; }
+
+.menu a:hover, .menu button:hover {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.menu-hombre {
-    background: #3498db;
-}
-
-.menu-mujer {
-    background: #e84393;
-}
-
-.menu-whatsapp {
-    background: #25D366;
 }
 
 /* CONTENIDO PRINCIPAL */
@@ -75,39 +66,11 @@ main {
     padding: 0 20px;
 }
 
-/* TÍTULOS */
 .titulo-pagina {
     text-align: center;
     color: #2c3e50;
     margin: 30px 0;
     font-size: 2.2rem;
-}
-
-/* BOTÓN DE PRUEBA */
-.btn-prueba {
-    background: linear-gradient(45deg, #FF6B6B, #FF8E53);
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    display: block;
-    margin: 20px auto;
-    transition: all 0.3s;
-    animation: pulse 2s infinite;
-}
-
-.btn-prueba:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
 }
 
 /* FORMULARIO */
@@ -120,12 +83,6 @@ main {
     max-width: 600px;
 }
 
-.formulario-contacto h3 {
-    color: #2c3e50;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
 .input-group {
     margin-bottom: 20px;
 }
@@ -135,9 +92,6 @@ main {
     margin-bottom: 8px;
     color: #555;
     font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 8px;
 }
 
 .input-group input {
@@ -156,19 +110,14 @@ main {
 }
 
 /* CATÁLOGO */
-.catalogo-container {
-    margin: 40px 0;
-}
-
-#catalogo-hombre,
-#catalogo-mujer {
+#catalogo-hombre, #catalogo-mujer {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
     margin-top: 30px;
 }
 
-/* PRODUCTO CARD */
+/* TARJETA DE PRODUCTO */
 .producto-card {
     background: white;
     border-radius: 15px;
@@ -184,71 +133,77 @@ main {
 }
 
 .producto-card.destacado {
-    border: 2px solid #FFD700;
+    border: 2px solid gold;
 }
 
 .badge-destacado {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: #FFD700;
+    background: gold;
     color: #333;
-    padding: 5px 10px;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 2;
+}
+
+/* CONTENEDOR DE IMAGEN */
+.producto-imagen-container {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+    background: #f0f0f0;
+}
+
+.producto-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.producto-card:hover .producto-imagen {
+    transform: scale(1.1);
+}
+
+.marca-logo {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 5px 15px;
     border-radius: 20px;
     font-size: 12px;
     font-weight: bold;
     z-index: 1;
 }
 
-.producto-img {
-    height: 180px;
-    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 80px;
-    color: white;
-    opacity: 0.9;
-}
-
+/* INFORMACIÓN DEL PRODUCTO */
 .producto-info {
-    padding: 25px;
+    padding: 20px;
 }
 
 .producto-info h3 {
     color: #2c3e50;
-    margin-bottom: 15px;
-    font-size: 1.4rem;
-    min-height: 60px;
+    margin-bottom: 5px;
+    font-size: 1.3rem;
+}
+
+.producto-marca {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    font-style: italic;
 }
 
 .descripcion {
     color: #666;
-    line-height: 1.6;
-    margin-bottom: 20px;
+    line-height: 1.5;
+    margin-bottom: 15px;
     font-size: 0.95rem;
-    min-height: 80px;
-}
-
-.precio-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 15px;
-    background: #f8f9fa;
-    border-radius: 10px;
-}
-
-.precio {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #27ae60;
-}
-
-.precio-container small {
-    color: #7f8c8d;
-    font-size: 0.9rem;
 }
 
 /* BOTÓN WHATSAPP */
@@ -256,16 +211,12 @@ main {
     background: #25D366;
     color: white;
     border: none;
-    padding: 15px 25px;
+    padding: 12px 20px;
     width: 100%;
     border-radius: 8px;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
     transition: all 0.3s;
 }
 
@@ -273,6 +224,70 @@ main {
     background: #1DA851;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+}
+
+/* MENSAJE PERSONALIZADO */
+.mensaje-personalizado {
+    grid-column: 1 / -1;
+    margin: 40px 0 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    padding: 40px 20px;
+    text-align: center;
+    color: white;
+    animation: aparecer 0.5s ease;
+}
+
+.mensaje-contenido {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.mensaje-icono {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.mensaje-contenido h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.mensaje-contenido p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+.btn-personalizado {
+    background: white;
+    color: #667eea;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: 20px 0;
+}
+
+.btn-personalizado:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.mensaje-nota {
+    font-size: 0.9rem !important;
+    opacity: 0.8 !important;
+    margin-top: 20px !important;
 }
 
 /* LOADING */
@@ -286,8 +301,8 @@ main {
     border: 4px solid #f3f3f3;
     border-top: 4px solid #3498db;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     animation: spin 1s linear infinite;
     margin: 0 auto 20px;
 }
@@ -312,14 +327,12 @@ footer {
     padding: 15px 30px;
     border-radius: 30px;
     text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: bold;
+    display: inline-block;
     margin: 20px 0;
-    transition: all 0.3s;
+    font-weight: bold;
     border: none;
     cursor: pointer;
+    font-size: 1rem;
 }
 
 .whatsapp-footer:hover {
@@ -335,29 +348,29 @@ footer {
         align-items: center;
     }
     
-    .menu a {
+    .menu a, .menu button {
         width: 90%;
-        justify-content: center;
+        text-align: center;
     }
     
-    #catalogo-hombre,
-    #catalogo-mujer {
+    #catalogo-hombre, #catalogo-mujer {
         grid-template-columns: 1fr;
-    }
-    
-    header h1 {
-        font-size: 2rem;
     }
     
     .titulo-pagina {
         font-size: 1.8rem;
     }
     
-    .producto-info h3 {
-        min-height: auto;
+    .mensaje-contenido h3 {
+        font-size: 1.5rem;
     }
     
-    .descripcion {
-        min-height: auto;
+    .mensaje-contenido p {
+        font-size: 1rem;
+    }
+    
+    .btn-personalizado {
+        padding: 12px 30px;
+        font-size: 1rem;
     }
 }

@@ -1,84 +1,140 @@
 // ============================================
-// CATALOGO.JS - SIMPLE Y FUNCIONAL
+// CATALOGO.JS - CON IMÁGENES DE MARCAS
 // ============================================
 console.log("✅ catalogo.js cargado");
 
-// DATOS DE PRODUCTOS FIJOS (no necesita API)
+// URLs de imágenes de marcas (imágenes gratis de internet)
+const imagenesMarcas = {
+  // Imágenes para hombre
+  sauvage:
+    "https://images.unsplash.com/photo-1610465299996-30f240ac2b1c?w=200&h=200&fit=crop&auto=format",
+  bleu: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=200&h=200&fit=crop&auto=format",
+  invictus:
+    "https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=200&h=200&fit=crop&auto=format",
+  acqua:
+    "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=200&h=200&fit=crop&auto=format",
+  million:
+    "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=200&h=200&fit=crop&auto=format",
+  boss: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=200&h=200&fit=crop&auto=format",
+
+  // Imágenes para mujer
+  blackopium:
+    "https://images.unsplash.com/photo-1541643600914-78b084683601?w=200&h=200&fit=crop&auto=format",
+  jadore:
+    "https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=200&h=200&fit=crop&auto=format",
+  goodgirl:
+    "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=200&h=200&fit=crop&auto=format",
+  vie: "https://images.unsplash.com/photo-1610465299996-30f240ac2b1c?w=200&h=200&fit=crop&auto=format",
+  chanel:
+    "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=200&h=200&fit=crop&auto=format",
+  flowerbomb:
+    "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=200&h=200&fit=crop&auto=format",
+
+  // Imagen por defecto
+  default:
+    "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=200&h=200&fit=crop&auto=format",
+};
+
+// DATOS DE PRODUCTOS (SIN PRECIOS)
 const productos = {
   hombre: [
     {
-      nombre: "DIESE PLUS ",
+      id: 1,
+      nombre: "SAUVAGE DIOR",
+      marca: "Dior",
       descripcion:
-        "PUEDE DECIR LO QUE QUIERA ",
-      precio: "1 ONZA 20000-2 ONZAS30000",
+        "Fragancia masculina fresca y amaderada con notas de bergamota",
+      imagen: imagenesMarcas.sauvage,
       destacado: true,
     },
     {
+      id: 2,
       nombre: "BLEU DE CHANEL",
+      marca: "Chanel",
       descripcion: "Aromática masculina con notas cítricas y amaderadas",
-      precio: "115.000",
+      imagen: imagenesMarcas.bleu,
       destacado: true,
     },
     {
+      id: 3,
       nombre: "INVICTUS PACO RABANNE",
+      marca: "Paco Rabanne",
       descripcion: "Fragancia deportiva masculina intensa y vigorosa",
-      precio: "90.000",
+      imagen: imagenesMarcas.invictus,
       destacado: false,
     },
     {
+      id: 4,
       nombre: "ACQUA DI GIO",
+      marca: "Giorgio Armani",
       descripcion: "Fragancia acuática fresca inspirada en el Mediterráneo",
-      precio: "95.000",
+      imagen: imagenesMarcas.acqua,
       destacado: false,
     },
     {
+      id: 5,
       nombre: "ONE MILLION",
+      marca: "Paco Rabanne",
       descripcion: "Amaderada con notas de canela, moderna y atrevida",
-      precio: "85.000",
+      imagen: imagenesMarcas.million,
       destacado: false,
     },
     {
+      id: 6,
       nombre: "HUGO BOSS BOTTLED",
+      marca: "Hugo Boss",
       descripcion: "Clásica masculina especiada y elegante",
-      precio: "88.000",
+      imagen: imagenesMarcas.boss,
       destacado: false,
     },
   ],
   mujer: [
     {
+      id: 1,
       nombre: "BLACK OPIUM YSL",
+      marca: "Yves Saint Laurent",
       descripcion: "Fragancia oriental dulce con notas de café y vainilla",
-      precio: "110.000",
+      imagen: imagenesMarcas.blackopium,
       destacado: true,
     },
     {
+      id: 2,
       nombre: "J'ADORE DIOR",
+      marca: "Dior",
       descripcion: "Fragancia floral femenina elegante y sofisticada",
-      precio: "105.000",
+      imagen: imagenesMarcas.jadore,
       destacado: true,
     },
     {
-      nombre: "GOOD GIRL CAROLINA HERRERA",
+      id: 3,
+      nombre: "GOOD GIRL",
+      marca: "Carolina Herrera",
       descripcion: "Fragancia seductora para la mujer moderna",
-      precio: "95.000",
+      imagen: imagenesMarcas.goodgirl,
       destacado: false,
     },
     {
-      nombre: "LA VIE EST BELLE LANCÔME",
+      id: 4,
+      nombre: "LA VIE EST BELLE",
+      marca: "Lancôme",
       descripcion: "Fragancia floral dulce y alegre",
-      precio: "100.000",
+      imagen: imagenesMarcas.vie,
       destacado: false,
     },
     {
+      id: 5,
       nombre: "CHANEL N°5",
+      marca: "Chanel",
       descripcion: "El clásico floral aldehído, icónico y eterno",
-      precio: "125.000",
+      imagen: imagenesMarcas.chanel,
       destacado: true,
     },
     {
-      nombre: "FLOWERBOMB VIKTOR&ROLF",
+      id: 6,
+      nombre: "FLOWERBOMB",
+      marca: "Viktor&Rolf",
       descripcion: "Explosión floral intensa y romántica",
-      precio: "108.000",
+      imagen: imagenesMarcas.flowerbomb,
       destacado: false,
     },
   ],
@@ -88,13 +144,9 @@ const productos = {
 function cargarCatalogo(genero) {
   console.log(`📦 Cargando catálogo para: ${genero}`);
 
-  // Buscar el contenedor
-  const contenedorId = `catalogo-${genero}`;
-  const contenedor = document.getElementById(contenedorId);
-
+  const contenedor = document.getElementById(`catalogo-${genero}`);
   if (!contenedor) {
-    console.error(`❌ ERROR: No se encontró #${contenedorId}`);
-    alert(`Error: No se puede cargar el catálogo. Contacta al soporte.`);
+    console.error(`❌ No se encontró #catalogo-${genero}`);
     return;
   }
 
@@ -106,7 +158,6 @@ function cargarCatalogo(genero) {
         </div>
     `;
 
-  // Esperar un momento y cargar
   setTimeout(() => {
     const productosGenero = productos[genero] || [];
 
@@ -124,31 +175,45 @@ function cargarCatalogo(genero) {
     let html = "";
 
     productosGenero.forEach((producto, index) => {
-      // Escapar comillas para el onclick
       const nombreSeguro = producto.nombre.replace(/'/g, "\\'");
 
       html += `
                 <div class="producto-card ${producto.destacado ? "destacado" : ""}">
-                    ${producto.destacado ? '<div class="badge-destacado">⭐ DESTACADO</div>' : ""}
-                    <div class="producto-img">
-                        ${genero === "hombre" ? "👨" : "👩"}
+                    ${producto.destacado ? '<div class="badge-destacado">⭐ MÁS VENDIDO</div>' : ""}
+                    <div class="producto-imagen-container">
+                        <img src="${producto.imagen}" 
+                             alt="${producto.nombre}" 
+                             class="producto-imagen"
+                             onerror="this.src='${imagenesMarcas.default}'">
+                        <div class="marca-logo">${producto.marca}</div>
                     </div>
                     <div class="producto-info">
                         <h3>${producto.nombre}</h3>
+                        <p class="producto-marca">${producto.marca}</p>
                         <p class="descripcion">${producto.descripcion}</p>
-                        <div class="precio-container">
-                            <span class="precio">$${producto.precio}</span>
-                            <small>IVA incluido</small>
-                        </div>
-                        <button onclick="contactar('${nombreSeguro}')" class="btn-whatsapp">
-                            💬 SOLICITAR POR WHATSAPP
+                        <button onclick="contactar('${nombreSeguro} - ${producto.marca}')" class="btn-whatsapp">
+                            💬 SOLICITAR INFORMACIÓN
                         </button>
                     </div>
                 </div>
             `;
     });
 
-    // Insertar en el contenedor
+    // Añadir mensaje de "¿No encontraste lo que buscabas?"
+    html += `
+            <div class="mensaje-personalizado">
+                <div class="mensaje-contenido">
+                    <span class="mensaje-icono">🔍</span>
+                    <h3>¿NO ENCONTRASTE LO QUE BUSCABAS?</h3>
+                    <p>Pregúntanos personalmente, tenemos muchas más opciones que no están en el catálogo.</p>
+                    <button onclick="contactar('Consulta personalizada - No encontré lo que buscaba')" class="btn-personalizado">
+                        💬 PREGUNTAR AHORA
+                    </button>
+                    <p class="mensaje-nota">Estamos para ayudarte a encontrar la fragancia perfecta para ti</p>
+                </div>
+            </div>
+        `;
+
     contenedor.innerHTML = html;
 
     console.log(
@@ -157,35 +222,17 @@ function cargarCatalogo(genero) {
   }, 800);
 }
 
-// CARGAR AUTOMÁTICAMENTE AL INICIAR
+// CARGAR AUTOMÁTICAMENTE
 document.addEventListener("DOMContentLoaded", function () {
   console.log("📄 DOM cargado");
 
-  // Detectar página actual
   const url = window.location.href;
-  const path = window.location.pathname;
 
-  console.log("URL:", url);
-  console.log("Path:", path);
-
-  if (
-    url.includes("hombre") ||
-    path.includes("hombre") ||
-    document.title.includes("Hombre")
-  ) {
-    console.log("🔄 Iniciando catálogo HOMBRE");
+  if (url.includes("hombre")) {
     cargarCatalogo("hombre");
-  } else if (
-    url.includes("mujer") ||
-    path.includes("mujer") ||
-    document.title.includes("Mujer")
-  ) {
-    console.log("🔄 Iniciando catálogo MUJER");
+  } else if (url.includes("mujer")) {
     cargarCatalogo("mujer");
-  } else {
-    console.log("ℹ️ No es página de catálogo específico");
   }
 });
 
-// Hacer función global
 window.cargarCatalogo = cargarCatalogo;
