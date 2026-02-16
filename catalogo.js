@@ -206,20 +206,7 @@ function cargarCatalogo(genero) {
             `;
     });
 
-    // Añadir mensaje de "¿No encontraste lo que buscabas?"
-    html += `
-            <div class="mensaje-personalizado">
-                <div class="mensaje-contenido">
-                    <span class="mensaje-icono">🔍</span>
-                    <h3>¿NO ENCONTRASTE LO QUE BUSCABAS?</h3>
-                    <p>Pregúntanos personalmente, tenemos muchas más opciones que no están en el catálogo.</p>
-                    <button onclick="contactar('Consulta personalizada - No encontré lo que buscaba')" class="btn-personalizado">
-                        💬 PREGUNTAR AHORA
-                    </button>
-                    <p class="mensaje-nota">Estamos para ayudarte a encontrar la fragancia perfecta para ti</p>
-                </div>
-            </div>
-        `;
+
 
     contenedor.innerHTML = html;
 

@@ -301,16 +301,114 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1> Perfumeria SSL</h1>
-        <h1> "Descubre el Perfume que Habla por Ti"</h1>
-        <p>Las mejores fragancias al mejor precio</p>
-        <nav class="menu">
-            <a href="./hombre.html">👨 PERFUMES HOMBRE</a>
-            <a href="./mujer.html">👩 PERFUMES MUJER</a>
-            <button onclick="contactar('Consulta General')">💬 WHATSAPP</button>
-        </nav>
-    </header>
+<!-- ======================================== -->
+<!-- HEADER BANNER - LOGO IZQUIERDA + BOTONES -->
+<!-- ======================================== -->
+
+<div style="
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 20px;
+    padding: 15px 30px;
+    margin: 20px auto;
+    max-width: 1200px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+">
+    <!-- LOGO A LA IZQUIERDA -->
+    <div style="
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    ">
+        <img src="./2026-02-16T00-28-38.png" 
+             alt="Perfumería SSL"
+             style="
+                height: 200px;
+                width: auto;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+             ">
+        
+        <div style="text-align: left;">
+            <h1 style="
+                font-size: 1.3rem;
+                margin: 0;
+                color: #FFD700;
+                font-weight: 700;
+                font-style: italic;
+            ">
+                "Descubre el perfume que Habla por Ti"
+            </h1>
+        </div>
+    </div>
+    
+    <!-- BOTONES DE NAVEGACIÓN EN LÍNEA -->
+    <nav style="
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    ">
+        <a href="./hombre.html" style="
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+        " onmouseover="this.style.transform='translateY(-3px)'; this.style.background='#2980b9'; this.style.boxShadow='0 8px 20px rgba(52,152,219,0.4)';"
+        onmouseout="this.style.transform='translateY(0)'; this.style.background='#3498db'; this.style.boxShadow='none';">
+            👨 HOMBRE
+        </a>
+        
+        <a href="./mujer.html" style="
+            background: #e84393;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+        " onmouseover="this.style.transform='translateY(-3px)'; this.style.background='#c0392b'; this.style.boxShadow='0 8px 20px rgba(232,67,147,0.4)';"
+        onmouseout="this.style.transform='translateY(0)'; this.style.background='#e84393'; this.style.boxShadow='none';">
+            👩 MUJER
+        </a>
+        
+        <button onclick="contactar('Consulta General')" style="
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+        " onmouseover="this.style.transform='translateY(-3px)'; this.style.background='#1DA851'; this.style.boxShadow='0 8px 20px rgba(37,211,102,0.4)';"
+        onmouseout="this.style.transform='translateY(0)'; this.style.background='#25D366'; this.style.boxShadow='none';">
+            💬 WHATSAPP
+        </button>
+    </nav>
+</div>
 
     <!-- ==================================== -->
     <!-- INTRO PARA PERFUMERIA SSL -->
@@ -773,6 +871,15 @@
         <p style="font-size: 1.1rem; margin-top: 20px; opacity: 0.8;">
             Perfumes originales • Todas las marcas • Todos los géneros
         </p>
+
+                <div class="cta-buttons">
+            <a href="./hombre.html" class="cta-button hombre">
+                👨 VER PERFUMES HOMBRE
+            </a>
+            <a href="./mujer.html" class="cta-button mujer">
+                👩 VER PERFUMES MUJER
+            </a>
+        </div>
     </div>
 
     <!-- LISTADO COMPLETO DE LOCIONES (OCULTO INICIALMENTE) -->
@@ -963,6 +1070,15 @@
             <p style="margin-top: 15px; color: #888;">
                 Tenemos alianzas con distribuidores, podemos conseguir prácticamente cualquier fragancia
             </p>
+            
+            </div>
+                    <div class="cta-buttons">
+                <a href="./hombre.html" class="cta-button hombre">
+                    👨 VER PERFUMES HOMBRE
+                </a>
+                <a href="./mujer.html" class="cta-button mujer">
+                    👩 VER PERFUMES MUJER
+                </a>
         </div>
     </div>
 
@@ -985,23 +1101,7 @@
         }
     </style>
 
-    <!-- HERO CON LLAMADO A LA ACCIÓN -->
-    <div class="hero">
-        <h2>✨ DESCUBRE NUESTRA COLECCIÓN COMPLETA</h2>
-        <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
-            Tenemos perfumes exclusivos para hombre y mujer con las mejores marcas.<br>
-            <strong>Todos disponibles en 1, 2 y 3 onzas.</strong>
-        </p>
-        
-        <div class="cta-buttons">
-            <a href="./hombre.html" class="cta-button hombre">
-                👨 VER PERFUMES HOMBRE
-            </a>
-            <a href="./mujer.html" class="cta-button mujer">
-                👩 VER PERFUMES MUJER
-            </a>
-        </div>
-    </div>
+
     
     <!-- SECCIÓN DE BENEFICIOS -->
     <div style="max-width: 1000px; margin: 50px auto; padding: 0 20px;">
