@@ -302,72 +302,102 @@
 </head>
 <body>
 <!-- ======================================== -->
-<!-- HEADER BANNER - LOGO IZQUIERDA + BOTONES -->
+<!-- HEADER RESPONSIVE - PERFUMERÍA SSL -->
 <!-- ======================================== -->
 
 <div style="
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    border-radius: 20px;
-    padding: 15px 30px;
-    margin: 20px auto;
-    max-width: 1200px;
+    border-radius: 20px 20px 20px 20px;
+    padding: 10px 5%;
+    margin: 0 auto 30px auto;
+    width: 100%;
+    box-sizing: border-box;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 15px;
 ">
-    <!-- LOGO A LA IZQUIERDA -->
+    <!-- LOGO Y TEXTO -->
     <div style="
         display: flex;
         align-items: center;
         gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
     ">
         <img src="./2026-02-16T00-28-38.png" 
              alt="Perfumería SSL"
              style="
-                height: 200px;
+                height: clamp(50px, 8vw, 80px);
                 width: auto;
+                height: 200px;
                 border-radius: 10px;
                 box-shadow: 0 5px 15px rgba(0,0,0,0.2);
              ">
         
         <div style="text-align: left;">
-            <h1 style="
-                font-size: 1.3rem;
-                margin: 0;
+
+            <p style="
+                font-size: clamp(0.8rem, 3vw, 1.1rem);
+                margin: 5px 0 0 0;
                 color: #FFD700;
-                font-weight: 700;
                 font-style: italic;
             ">
                 "Descubre el perfume que Habla por Ti"
-            </h1>
+            </p>
         </div>
     </div>
     
-    <!-- BOTONES DE NAVEGACIÓN EN LÍNEA -->
+    <!-- BOTONES DE NAVEGACIÓN -->
     <nav style="
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 8px;
         flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
     ">
+        <a href="./index.html" style="
+            background: #66696c;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+            border: 1px solid rgba(255,255,255,0.2);
+            flex: 0 1 auto;
+        " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 20px rgba(102,105,108,0.4)';"
+        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+            🏠 INICIO
+        </a>
+        
         <a href="./hombre.html" style="
             background: #3498db;
             color: white;
             text-decoration: none;
-            padding: 12px 25px;
+            padding: 10px 20px;
             border-radius: 40px;
             font-weight: bold;
-            font-size: 1rem;
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
             transition: all 0.3s;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 5px;
+            white-space: nowrap;
             border: 1px solid rgba(255,255,255,0.2);
-        " onmouseover="this.style.transform='translateY(-3px)'; this.style.background='#2980b9'; this.style.boxShadow='0 8px 20px rgba(52,152,219,0.4)';"
-        onmouseout="this.style.transform='translateY(0)'; this.style.background='#3498db'; this.style.boxShadow='none';">
+            flex: 0 1 auto;
+        " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 20px rgba(52,152,219,0.4)';"
+        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
             👨 HOMBRE
         </a>
         
@@ -375,17 +405,19 @@
             background: #e84393;
             color: white;
             text-decoration: none;
-            padding: 12px 25px;
+            padding: 10px 20px;
             border-radius: 40px;
             font-weight: bold;
-            font-size: 1rem;
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
             transition: all 0.3s;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 5px;
+            white-space: nowrap;
             border: 1px solid rgba(255,255,255,0.2);
-        " onmouseover="this.style.transform='translateY(-3px)'; this.style.background='#c0392b'; this.style.boxShadow='0 8px 20px rgba(232,67,147,0.4)';"
-        onmouseout="this.style.transform='translateY(0)'; this.style.background='#e84393'; this.style.boxShadow='none';">
+            flex: 0 1 auto;
+        " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 20px rgba(232,67,147,0.4)';"
+        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
             👩 MUJER
         </a>
         
@@ -393,22 +425,63 @@
             background: #25D366;
             color: white;
             border: none;
-            padding: 12px 25px;
+            padding: 10px 20px;
             border-radius: 40px;
             font-weight: bold;
-            font-size: 1rem;
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
             transition: all 0.3s;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 5px;
+            white-space: nowrap;
             border: 1px solid rgba(255,255,255,0.2);
-        " onmouseover="this.style.transform='translateY(-3px)'; this.style.background='#1DA851'; this.style.boxShadow='0 8px 20px rgba(37,211,102,0.4)';"
-        onmouseout="this.style.transform='translateY(0)'; this.style.background='#25D366'; this.style.boxShadow='none';">
+            flex: 0 1 auto;
+        " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 20px rgba(37,211,102,0.4)';"
+        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
             💬 WHATSAPP
         </button>
     </nav>
 </div>
+
+<!-- ESTILOS ADICIONALES PARA RESPONSIVE -->
+<style>
+    @media (max-width: 768px) {
+        /* Para tablets y móviles */
+        div[style*="display: flex"] > div:first-child {
+            width: 100%;
+            justify-content: center !important;
+            text-align: center !important;
+        }
+        
+        div[style*="display: flex"] > div:first-child > div {
+            text-align: center !important;
+        }
+        
+        nav {
+            width: 100% !important;
+        }
+        
+        nav a, nav button {
+            flex: 1 1 auto !important;
+            justify-content: center !important;
+            min-width: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        /* Para móviles pequeños */
+        nav a, nav button {
+            width: 100% !important;
+            justify-content: center !important;
+            padding: 12px !important;
+        }
+        
+        div[style*="display: flex"] > div:first-child {
+            flex-direction: column !important;
+        }
+    }
+</style>
 
     <!-- ==================================== -->
     <!-- INTRO PARA PERFUMERIA SSL -->
@@ -448,8 +521,8 @@
         
         <!-- LOGO O ÍCONO PRINCIPAL -->
         <div style="
-            font-size: 6rem;
-            margin-bottom: 20px;
+            font-size: 10rem;
+            margin-bottom: 10px;
             animation: float 3s ease-in-out infinite;
             position: relative;
             z-index: 2;
@@ -460,9 +533,9 @@
         <!-- NOMBRE DEL EMPRENDIMIENTO -->
         <h1 style="
             font-size: 4rem;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             font-weight: 800;
             position: relative;
             z-index: 2;
