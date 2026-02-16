@@ -531,17 +531,21 @@
         </div>
         
         <!-- NOMBRE DEL EMPRENDIMIENTO -->
-        <h1 style="
-            font-size: 4rem;
-            margin-bottom: 10px;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
-            letter-spacing: 1px;
-            font-weight: 800;
-            position: relative;
-            z-index: 2;
-        ">
-            PERFUMERIA SSL
-        </h1>
+    <h1 style="
+        font-size: clamp(2rem, 8vw, 4rem);
+        margin-bottom: 10px;
+        text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+        letter-spacing: clamp(0.5px, 1vw, 1px);
+        font-weight: 800;
+        position: relative;
+        z-index: 2;
+        flex: 0 1 auto;
+        line-height: 1.2;
+        word-break: break-word;
+        max-width: 100%;
+    ">
+        PERFUMERIA SSL
+    </h1>
         
         <!-- FRASE DE IMPACTO -->
         <p style="
@@ -894,220 +898,386 @@
     </div>
 
     <!-- ======================================== -->
-    <!-- BOTÓN Y LISTADO COMPLETO DE LOCIONES -->
-    <!-- ======================================== -->
+<!-- BOTÓN Y LISTADO COMPLETO DE LOCIONES -->
+<!-- ======================================== -->
 
-    <!-- SECCIÓN "¿NO ENCONTRASTE LO QUE BUSCAS?" CON BOTÓN -->
-    <div class="mensaje-personalizado" style="
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 40px;
-        padding: 60px 30px;
-        margin: 50px auto;
-        max-width: 1000px;
-        text-align: center;
-        color: white;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+<!-- SECCIÓN "¿NO ENCONTRASTE LO QUE BUSCAS?" CON BOTÓN -->
+<div class="mensaje-personalizado" style="
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 40px;
+    padding: 60px 30px;
+    margin: 50px auto;
+    max-width: 1000px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+">
+    <span style="
+        font-size: clamp(3rem, 10vw, 5rem);
+        display: block;
+        margin-bottom: 20px;
+        animation: bounce 2s infinite;
+    ">🔍</span>
+    
+    <h2 style="
+        font-size: clamp(1.8rem, 5vw, 2.8rem);
+        margin-bottom: 20px;
+        padding: 0 10px;
+    ">¿NO ENCONTRASTE LO QUE BUSCAS?</h2>
+    
+    <p style="
+        font-size: clamp(1rem, 3vw, 1.3rem);
+        max-width: 700px;
+        margin: 0 auto 30px;
+        opacity: 0.95;
+        padding: 0 15px;
     ">
-        <span style="font-size: 5rem; display: block; margin-bottom: 20px; animation: bounce 2s infinite;">🔍</span>
-        
-        <h2 style="font-size: 2.8rem; margin-bottom: 20px;">¿NO ENCONTRASTE LO QUE BUSCAS?</h2>
-        
-        <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto 30px; opacity: 0.95;">
-            Tenemos muchas más opciones que no están en el catálogo. 
-            <strong>¡MÁS DE 100 FRAGANCIAS DISPONIBLES!</strong>
-        </p>
-        
-        <!-- BOTÓN PRINCIPAL QUE ABRE EL LISTADO -->
-        <button onclick="toggleListadoCompleto()" style="
-            background: white;
-            color: #667eea;
-            border: none;
-            padding: 18px 45px;
-            border-radius: 60px;
-            font-size: 1.3rem;
+        Tenemos muchas más opciones que no están en el catálogo. 
+        <strong>¡MÁS DE 100 FRAGANCIAS DISPONIBLES!</strong>
+    </p>
+    
+    <!-- BOTÓN PRINCIPAL QUE ABRE EL LISTADO -->
+    <button onclick="toggleListadoCompleto()" style="
+        background: white;
+        color: #667eea;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 60px;
+        font-size: clamp(1rem, 3vw, 1.3rem);
+        font-weight: bold;
+        cursor: pointer;
+        margin: 20px 0;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+        transition: all 0.3s;
+        width: auto;
+        max-width: 90%;
+    "
+    onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 30px rgba(0,0,0,0.3)';"
+    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 15px 25px rgba(0,0,0,0.2)';"
+    >
+        📋 VER LISTADO COMPLETO DE LOCIONES
+        <span style="font-size: 1.5rem;">👇</span>
+    </button>
+    
+    <p style="
+        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        margin-top: 20px;
+        opacity: 0.8;
+    ">
+        Perfumes originales • Todas las marcas • Todos los géneros
+    </p>
+
+    <div style="
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+    ">
+        <a href="./hombre.html" style="
+            background: #3498db;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
             font-weight: bold;
-            cursor: pointer;
-            margin: 20px 0;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+            gap: 8px;
             transition: all 0.3s;
-        "
-        onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 30px rgba(0,0,0,0.3)';"
-        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 15px 25px rgba(0,0,0,0.2)';"
-        >
-            📋 VER LISTADO COMPLETO DE LOCIONES
-            <span style="font-size: 1.5rem;">👇</span>
-        </button>
-        
-        <p style="font-size: 1.1rem; margin-top: 20px; opacity: 0.8;">
-            Perfumes originales • Todas las marcas • Todos los géneros
-        </p>
-
-                <div class="cta-buttons">
-            <a href="./hombre.html" class="cta-button hombre">
-                👨 VER PERFUMES HOMBRE
-            </a>
-            <a href="./mujer.html" class="cta-button mujer">
-                👩 VER PERFUMES MUJER
-            </a>
-        </div>
+        " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(52,152,219,0.4)';"
+        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+            👨 VER PERFUMES HOMBRE
+        </a>
+        <a href="./mujer.html" style="
+            background: #e84393;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(232,67,147,0.4)';"
+        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+            👩 VER PERFUMES MUJER
+        </a>
     </div>
+</div>
 
-    <!-- LISTADO COMPLETO DE LOCIONES (OCULTO INICIALMENTE) -->
-    <div id="listadoCompleto" style="
-        display: none;
-        background: white;
-        border-radius: 40px;
-        padding: 50px 30px;
-        margin: 30px auto;
-        max-width: 1200px;
-        box-shadow: 0 25px 50px rgba(0,0,0,0.2);
-        animation: aparecer 0.5s ease;
-    ">
-        <!-- TÍTULO DEL LISTADO -->
-        <div style="text-align: center; margin-bottom: 40px;">
-            <h2 style="font-size: 2.5rem; color: #5D4A66; margin-bottom: 15px;">
-                📋 LISTADO COMPLETO DE LOCIONES
-            </h2>
-            <div style="
-                width: 150px;
-                height: 4px;
-                background: linear-gradient(90deg, #667eea, #764ba2);
-                margin: 0 auto;
-                border-radius: 2px;
-            "></div>
-            <p style="font-size: 1.2rem; color: #666; margin-top: 20px;">
-                Más de 100 fragancias organizadas por marca y género
-            </p>
-        </div>
-        
-        <!-- BOTÓN PARA CERRAR -->
-        <div style="text-align: right; margin-bottom: 20px;">
-            <button onclick="toggleListadoCompleto()" style="
-                background: #ff4d4d;
-                color: white;
-                border: none;
-                padding: 10px 20px;
-                border-radius: 30px;
-                cursor: pointer;
-                font-size: 1rem;
-                display: inline-flex;
-                align-items: center;
-                gap: 5px;
-            ">
-                ✕ CERRAR LISTADO
-            </button>
-        </div>
-        
-        <!-- CONTENEDOR DE MARCAS POR GÉNERO -->
-        <div style="
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
+<!-- LISTADO COMPLETO DE LOCIONES (OCULTO INICIALMENTE) -->
+<div id="listadoCompleto" style="
+    display: none;
+    background: white;
+    border-radius: 40px;
+    padding: 40px 20px;
+    margin: 30px auto;
+    max-width: 900px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+    animation: aparecer 0.5s ease;
+">
+    <!-- TÍTULO DEL LISTADO -->
+    <div style="text-align: center; margin-bottom: 30px;">
+        <h2 style="
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: #5D4A66;
+            margin-bottom: 15px;
+            padding: 0 10px;
         ">
-            <!-- SECCIÓN HOMBRE -->
+            📋 LISTADO COMPLETO DE LOCIONES
+        </h2>
+        <div style="
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            margin: 0 auto;
+            border-radius: 2px;
+        "></div>
+        <p style="
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: #666;
+            margin-top: 20px;
+            padding: 0 15px;
+        ">
+            Más de 100 fragancias organizadas por marca y género
+        </p>
+    </div>
+    
+    <!-- BOTÓN PARA CERRAR -->
+    <div style="text-align: right; margin-bottom: 20px; padding: 0 10px;">
+        <button onclick="toggleListadoCompleto()" style="
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+        " onmouseover="this.style.background='#ff3333'; this.style.transform='scale(1.05)'"
+        onmouseout="this.style.background='#ff4d4d'; this.style.transform='scale(1)'">
+            ✕ CERRAR LISTADO
+        </button>
+    </div>
+    
+    <!-- CONTENEDOR ÚNICO CENTRADO -->
+    <div style="
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 10px;
+    ">
+        <!-- SECCIÓN HOMBRE -->
+        <div style="
+            background: linear-gradient(145deg, #f8f9fa, #ffffff);
+            border-radius: 30px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 2px solid #3498db;
+            box-shadow: 0 10px 20px rgba(52,152,219,0.2);
+        ">
             <div style="
-                background: #f8f9fa;
-                border-radius: 30px;
-                padding: 30px;
-                border: 2px solid #3498db;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                margin-bottom: 20px;
+                border-bottom: 2px solid #3498db;
+                padding-bottom: 15px;
+                flex-wrap: wrap;
             ">
-                <div style="
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    margin-bottom: 25px;
-                    border-bottom: 2px solid #3498db;
-                    padding-bottom: 15px;
-                ">
-                    <span style="font-size: 3rem;">👨</span>
-                    <h3 style="font-size: 2rem; color: #2c3e50;">PERFUMES PARA HOMBRE</h3>
-                    <span style="background: #3498db; color: white; padding: 5px 15px; border-radius: 30px;">62 fragancias</span>
-                </div>
-                
-                <!-- MARCAS HOMBRE -->
+                <span style="font-size: clamp(2rem, 5vw, 3rem);">👨</span>
+                <h3 style="
+                    font-size: clamp(1.3rem, 3vw, 2rem);
+                    color: #2c3e50;
+                    margin: 0;
+                ">PERFUMES PARA HOMBRE</h3>
+                <span style="
+                    background: #3498db;
+                    color: white;
+                    padding: 5px 12px;
+                    border-radius: 30px;
+                    font-size: clamp(0.8rem, 2vw, 1rem);
+                ">62 fragancias</span>
+            </div>
+            
+            <!-- MARCAS EN COLUMNAS CENTRADAS -->
+            <div>
                 <div style="margin-bottom: 20px;">
-                    <h4 style="color: #3498db; margin-bottom: 15px; font-size: 1.3rem;">🇫🇷 MARCAS FRANCESAS</h4>
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Dior (Sauvage, Fahrenheit, Homme)</div>
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Chanel (Bleu, Allure, Platinum)</div>
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Yves Saint Laurent (Y, La Nuit)</div>
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Paco Rabanne (1 Million, Invictus)</div>
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Jean Paul Gaultier (Le Male)</div>
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Givenchy (Gentleman, Pi)</div>
+                    <h4 style="
+                        color: #3498db;
+                        margin-bottom: 12px;
+                        font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+                        text-align: center;
+                    ">🇫🇷 MARCAS FRANCESAS</h4>
+                    <div style="
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                        gap: 10px;
+                        max-width: 600px;
+                        margin: 0 auto;
+                    ">
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Dior (Sauvage, Fahrenheit)</div>
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Chanel (Bleu, Allure)</div>
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> YSL (Y, La Nuit)</div>
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Paco Rabanne (1 Million, Invictus)</div>
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Jean Paul Gaultier (Le Male)</div>
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Givenchy (Gentleman, Pi)</div>
                     </div>
                 </div>
                 
                 <div style="margin-bottom: 20px;">
-                    <h4 style="color: #e74c3c; margin-bottom: 15px; font-size: 1.3rem;">🇮🇹 MARCAS ITALIANAS</h4>
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Giorgio Armani (Acqua di Gio)</div>
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Dolce & Gabbana (The One)</div>
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Versace (Eros, Dylan Blue)</div>
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Bvlgari (Aqva, Man)</div>
+                    <h4 style="
+                        color: #e74c3c;
+                        margin-bottom: 12px;
+                        font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+                        text-align: center;
+                    ">🇮🇹 MARCAS ITALIANAS</h4>
+                    <div style="
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                        gap: 10px;
+                        max-width: 500px;
+                        margin: 0 auto;
+                    ">
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Giorgio Armani (Acqua di Gio)</div>
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Dolce & Gabbana (The One)</div>
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Versace (Eros, Dylan Blue)</div>
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Bvlgari (Aqva, Man)</div>
                     </div>
                 </div>
                 
                 <div>
-                    <h4 style="color: #27ae60; margin-bottom: 15px; font-size: 1.3rem;">🇺🇸 MARCAS AMERICANAS</h4>
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Calvin Klein (Eternity, CK One)</div>
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Ralph Lauren (Polo Blue)</div>
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Tom Ford (Oud Wood)</div>
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Hugo Boss (Bottled)</div>
+                    <h4 style="
+                        color: #27ae60;
+                        margin-bottom: 12px;
+                        font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+                        text-align: center;
+                    ">🇺🇸 MARCAS AMERICANAS</h4>
+                    <div style="
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                        gap: 10px;
+                        max-width: 500px;
+                        margin: 0 auto;
+                    ">
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Calvin Klein (Eternity, CK One)</div>
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Ralph Lauren (Polo Blue)</div>
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Tom Ford (Oud Wood)</div>
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Hugo Boss (Bottled)</div>
                     </div>
                 </div>
             </div>
-            
-            <!-- SECCIÓN MUJER -->
+        </div>
+        
+        <!-- SECCIÓN MUJER -->
+        <div style="
+            background: linear-gradient(145deg, #f8f9fa, #ffffff);
+            border-radius: 30px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 2px solid #e84393;
+            box-shadow: 0 10px 20px rgba(232,67,147,0.2);
+        ">
             <div style="
-                background: #f8f9fa;
-                border-radius: 30px;
-                padding: 30px;
-                border: 2px solid #e84393;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                margin-bottom: 20px;
+                border-bottom: 2px solid #e84393;
+                padding-bottom: 15px;
+                flex-wrap: wrap;
             ">
-                <div style="
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    margin-bottom: 25px;
-                    border-bottom: 2px solid #e84393;
-                    padding-bottom: 15px;
-                ">
-                    <span style="font-size: 3rem;">👩</span>
-                    <h3 style="font-size: 2rem; color: #2c3e50;">PERFUMES PARA MUJER</h3>
-                    <span style="background: #e84393; color: white; padding: 5px 15px; border-radius: 30px;">58 fragancias</span>
-                </div>
-                
-                <!-- MARCAS MUJER -->
+                <span style="font-size: clamp(2rem, 5vw, 3rem);">👩</span>
+                <h3 style="
+                    font-size: clamp(1.3rem, 3vw, 2rem);
+                    color: #2c3e50;
+                    margin: 0;
+                ">PERFUMES PARA MUJER</h3>
+                <span style="
+                    background: #e84393;
+                    color: white;
+                    padding: 5px 12px;
+                    border-radius: 30px;
+                    font-size: clamp(0.8rem, 2vw, 1rem);
+                ">58 fragancias</span>
+            </div>
+            
+            <!-- MARCAS MUJER EN COLUMNAS CENTRADAS -->
+            <div>
                 <div style="margin-bottom: 20px;">
-                    <h4 style="color: #e84393; margin-bottom: 15px; font-size: 1.3rem;">🇫🇷 MARCAS FRANCESAS</h4>
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Dior (J'adore, Poison)</div>
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Chanel (N°5, Coco Mademoiselle)</div>
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> YSL (Black Opium, Libre)</div>
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Lancôme (La Vie Est Belle)</div>
+                    <h4 style="
+                        color: #e84393;
+                        margin-bottom: 12px;
+                        font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+                        text-align: center;
+                    ">🇫🇷 MARCAS FRANCESAS</h4>
+                    <div style="
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                        gap: 10px;
+                        max-width: 600px;
+                        margin: 0 auto;
+                    ">
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Dior (J'adore, Poison)</div>
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Chanel (N°5, Coco)</div>
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> YSL (Black Opium, Libre)</div>
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Lancôme (La Vie Est Belle)</div>
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Guerlain (Shalimar)</div>
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Givenchy (L'Interdit)</div>
                     </div>
                 </div>
                 
                 <div style="margin-bottom: 20px;">
-                    <h4 style="color: #f39c12; margin-bottom: 15px; font-size: 1.3rem;">🇪🇸 MARCAS ESPAÑOLAS</h4>
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Carolina Herrera (Good Girl)</div>
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Paco Rabanne (Olympéa)</div>
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Loewe (Aire, 001 Woman)</div>
+                    <h4 style="
+                        color: #f39c12;
+                        margin-bottom: 12px;
+                        font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+                        text-align: center;
+                    ">🇪🇸 MARCAS ESPAÑOLAS</h4>
+                    <div style="
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                        gap: 10px;
+                        max-width: 500px;
+                        margin: 0 auto;
+                    ">
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Carolina Herrera (Good Girl)</div>
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Paco Rabanne (Olympéa)</div>
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Loewe (001 Woman)</div>
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Adolfo Domínguez (Agua Fresca)</div>
                     </div>
                 </div>
                 
                 <div>
-                    <h4 style="color: #9b59b6; margin-bottom: 15px; font-size: 1.3rem;">🇺🇸 OTRAS MARCAS</h4>
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Calvin Klein (Euphoria)</div>
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Marc Jacobs (Daisy)</div>
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Vera Wang (Princess)</div>
-                        <div style="display: flex; align-items: center; gap: 8px;"><span style="color: #27ae60;">✓</span> Tom Ford (Black Orchid)</div>
+                    <h4 style="
+                        color: #9b59b6;
+                        margin-bottom: 12px;
+                        font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+                        text-align: center;
+                    ">🇺🇸 MARCAS AMERICANAS</h4>
+                    <div style="
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                        gap: 10px;
+                        max-width: 500px;
+                        margin: 0 auto;
+                    ">
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Calvin Klein (Euphoria)</div>
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Marc Jacobs (Daisy)</div>
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Vera Wang (Princess)</div>
+                        <div style="display: flex; align-items: center; gap: 5px;"><span style="color: #27ae60;">✓</span> Tom Ford (Black Orchid)</div>
                     </div>
                 </div>
             </div>
@@ -1115,64 +1285,100 @@
         
         <!-- NOTA ADICIONAL -->
         <div style="
-            background: linear-gradient(135deg, #f8f9fa, #ffffff);
-            border-radius: 20px;
-            padding: 30px;
-            margin-top: 40px;
+            background: linear-gradient(135deg, #667eea10, #764ba210);
+            border-radius: 30px;
+            padding: 25px;
+            margin-top: 20px;
             text-align: center;
             border: 2px dashed #667eea;
         ">
-            <p style="font-size: 1.2rem; color: #5D4A66; margin-bottom: 20px;">
+            <p style="
+                font-size: clamp(1rem, 2.5vw, 1.2rem);
+                color: #5D4A66;
+                margin-bottom: 20px;
+            ">
                 ⚡ ¿No encuentras una fragancia específica? ¡Pregúntanos!
             </p>
             <button onclick="contactar('Consulta por fragancia no listada')" style="
                 background: #25D366;
                 color: white;
                 border: none;
-                padding: 15px 40px;
+                padding: 12px 30px;
                 border-radius: 50px;
-                font-size: 1.2rem;
+                font-size: clamp(1rem, 2.5vw, 1.2rem);
                 font-weight: bold;
                 cursor: pointer;
                 display: inline-flex;
                 align-items: center;
-                gap: 10px;
-            ">
+                gap: 8px;
+                transition: all 0.3s;
+            " onmouseover="this.style.background='#1DA851'; this.style.transform='translateY(-3px)'"
+            onmouseout="this.style.background='#25D366'; this.style.transform='translateY(0)'">
                 💬 PREGUNTAR AHORA
             </button>
-            <p style="margin-top: 15px; color: #888;">
+            <p style="
+                margin-top: 15px;
+                color: #666;
+                font-size: clamp(0.8rem, 2vw, 0.95rem);
+            ">
                 Tenemos alianzas con distribuidores, podemos conseguir prácticamente cualquier fragancia
             </p>
-            
-            </div>
-                    <div class="cta-buttons">
-                <a href="./hombre.html" class="cta-button hombre">
-                    👨 VER PERFUMES HOMBRE
-                </a>
-                <a href="./mujer.html" class="cta-button mujer">
-                    👩 VER PERFUMES MUJER
-                </a>
+        </div>
+
+        <!-- BOTONES DE NAVEGACIÓN -->
+        <div style="display: flex; justify-content: center; gap: 20px; margin-top: 30px; flex-wrap: wrap;">
+            <a href="./hombre.html" style="
+                background: #3498db;
+                color: white;
+                text-decoration: none;
+                padding: 12px 30px;
+                border-radius: 50px;
+                font-weight: bold;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                transition: all 0.3s;
+            " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(52,152,219,0.4)'"
+            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                👨 VER PERFUMES HOMBRE
+            </a>
+            <a href="./mujer.html" style="
+                background: #e84393;
+                color: white;
+                text-decoration: none;
+                padding: 12px 30px;
+                border-radius: 50px;
+                font-weight: bold;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                transition: all 0.3s;
+            " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(232,67,147,0.4)'"
+            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                👩 VER PERFUMES MUJER
+            </a>
         </div>
     </div>
+</div>
 
-    <!-- ANIMACIONES Y SCRIPT PARA EL LISTADO -->
-    <style>
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+<!-- ANIMACIONES -->
+<style>
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes aparecer {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
         }
-        
-        @keyframes aparecer {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
-    </style>
+    }
+</style>
 
 
     
